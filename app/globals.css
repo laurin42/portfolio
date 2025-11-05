@@ -3,19 +3,24 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent: #48aa10ff;
+  --font-funnel: var(--font-funnel);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-funnel: var(--font-funnel-display);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --accent: #19d1dfff;
   }
 }
 
