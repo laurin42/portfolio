@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 const funnelDisplay = Funnel_Display({
   variable: "--font-funnel-display",
-  subsets:["latin"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
