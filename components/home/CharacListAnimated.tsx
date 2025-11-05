@@ -63,13 +63,13 @@ export default function CharacteristicsListAnimated({
     <span
       role="text"
       aria-live="polite"
-      className="inline-block h-24 overflow-hidden align-bottom"
+      className="inline-block h-[39px] sm:h-24 overflow-hidden align-bottom"
     >
       <ul ref={listRef} className="list-none m-0 p-0">
         {characteristics.map((charac, id) => (
           <li
             key={id}
-            className={`pl-6 h-24 flex items-center justify-start text-4xl sm:text-8xl transition-opacity duration-300 ${
+            className={`pl-2 sm:pl-6 h-[39px] sm:h-24 flex items-center justify-start text-4xl sm:text-8xl transition-opacity duration-300 ${
               id >= activeIndex ? "opacity-100" : "opacity-0"
             }`}
           >
