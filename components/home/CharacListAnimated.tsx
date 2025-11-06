@@ -1,9 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 import gsap from "gsap";
 
-const characteristics = ["curious", "dedicated", "adaptable", "Laurin"];
+const characteristics = [
+  "",
+  "curious",
+  "dedicated",
+  "adaptable",
+  "webdeveloper",
+];
 
 export default function CharacteristicsListAnimated({
   onAnimationComplete,
@@ -60,24 +67,30 @@ export default function CharacteristicsListAnimated({
   }, [onAnimationComplete]);
 
   return (
-    <span
+    <motion.h2
       role="text"
       aria-live="polite"
-      className="inline-block h-[39px] sm:h-24 overflow-hidden align-bottom"
+      className="inline-block h-10 sm:h-36px overflow-hidden align-bottom"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
     >
       <ul ref={listRef} className="list-none m-0 p-0">
         {characteristics.map((charac, id) => (
           <li
             key={id}
-            className={`pl-2 sm:pl-6 h-[39px] sm:h-24 flex items-center justify-start text-4xl sm:text-8xl transition-opacity duration-300 ${
+            className={`h-10 sm:h-35px w-full flex items-center justify-end text-accent text-2xl sm:text-4xl transition-opacity duration-300 ${
               id >= activeIndex ? "opacity-100" : "opacity-0"
             }`}
           >
-            {charac}
-            <span className="text-accent">.</span>
+            {id === characteristics.length - 1 && id === activeIndex ? (
+              <>{charac}</>
+            ) : (
+              <>{charac}</>
+            )}
           </li>
         ))}
       </ul>
-    </span>
+    </motion.h2>
   );
 }

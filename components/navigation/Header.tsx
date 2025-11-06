@@ -1,18 +1,22 @@
 "use client";
 
 import { motion } from "motion/react";
-import MyNavigationMenu from "./NavigationMenu";
+import MyNavigationMenuDesktop from "./NavigationMenuDesktop";
+import MyNavigationMenuMobile from "./NavigationMenuMobile";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function Header({ isMenuVisible }: { isMenuVisible: boolean }) {
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
       animate={isMenuVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-      transition={{ duration: 0.5, delay: 0.8 }}
-      className="fixed top-0 left-0 w-full z-50 p-4 flex justify-between items-center font-funnel"
+      transition={{ duration: 0.3, delay: 0.0 }}
+      className="fixed top-0 left-0 w-full z-50 p-4  flex justify-between items-center font-funnel bg-background backdrop-blur-2xl"
     >
-      <div className="w-full flex justify-end-safe">
-        <MyNavigationMenu />
+      <div className="w-full flex justify-end md:justify-center">
+        <MyNavigationMenuDesktop />
+        <ThemeToggle />
+        <MyNavigationMenuMobile />
       </div>
     </motion.header>
   );

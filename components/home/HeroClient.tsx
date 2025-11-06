@@ -3,6 +3,8 @@
 import { useState, useCallback } from "react";
 import CharacListAnimated from "./CharacListAnimated";
 import { motion } from "motion/react";
+import { FaLongArrowAltRight } from "react-icons/fa";
+import ArrowResponsive from "./ArrowResponsive";
 
 export default function HeroClient({
   onAnimationComplete,
@@ -16,35 +18,19 @@ export default function HeroClient({
     onAnimationComplete();
   }, [onAnimationComplete]);
 
-  const transition = {
-    duration: 0.8,
-    delay: 0.4,
-  };
-
   return (
     <motion.section
-      initial={false}
-      whileInView="visible"
-      transition={transition}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, delay: 0.3 }}
       className="h-svh px-4 flex flex-col justify-center items-center font-funnel"
     >
-      <div className="flex flex-col max-w-fit">
-        <h1 className="text-4xl w-full sm:text-8xl text-left">
-          Hello<span className="text-accent">, </span>I am
-          <CharacListAnimated onAnimationComplete={handleAnimationComplete} />
+      <div className="flex flex-col justify-center">
+        <h1 className="text-4xl sm:text-8xl text-left">
+          Hello<span className="text-accent">, </span>I am Laurin
+          <span className="text-accent">.</span>
         </h1>
-        <motion.h2
-          initial={{ opacity: 0, y: 0 }}
-          animate={
-            animationDone
-              ? { opacity: 1, y: 0, x: 0 }
-              : { opacity: 0, y: 0, x: -40 }
-          }
-          transition={{ duration: 0.8 }}
-          className="mt-2 sm:mt-4 text-2xl sm:text-4xl font-semibold text-accent tracking-widest text-right"
-        >
-          Webdeveloper
-        </motion.h2>
+        <CharacListAnimated onAnimationComplete={handleAnimationComplete} />
       </div>
     </motion.section>
   );
