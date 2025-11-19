@@ -51,19 +51,19 @@ export default function CharacteristicsListAnimated({
         ease: "power2.inOut",
         onComplete: () => {
           if (index < characteristics.length - 1) {
-            setTimeout(animateNext, 1200);
+            setTimeout(animateNext, 300);
           } else {
             setTimeout(() => {
               if (onAnimationComplete) {
                 onAnimationComplete();
               }
-            }, 1200);
+            }, 300);
           }
         },
       });
     };
 
-    setTimeout(animateNext, 1200);
+    setTimeout(animateNext, 300);
   }, [onAnimationComplete]);
 
   return (

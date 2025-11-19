@@ -3,8 +3,6 @@
 import { useState, useCallback } from "react";
 import CharacListAnimated from "./CharacListAnimated";
 import { motion } from "motion/react";
-import { FaLongArrowAltRight } from "react-icons/fa";
-import ArrowResponsive from "./ArrowResponsive";
 
 export default function HeroClient({
   onAnimationComplete,
@@ -31,6 +29,13 @@ export default function HeroClient({
           <span className="text-accent">.</span>
         </h1>
         <CharacListAnimated onAnimationComplete={handleAnimationComplete} />
+        <p
+          className={`${
+            animationDone ? "opacity-100" : "opacity-0"
+          } text-right text-2xl transition-opacity duration-300`}
+        >
+          based in Düsseldorf, Germany
+        </p>
       </div>
     </motion.section>
   );
