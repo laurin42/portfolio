@@ -2,6 +2,7 @@
 
 import { IoMenu as Menu, IoClose as Close } from "react-icons/io5";
 import { useEffect, useRef, RefObject } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 import gsap from "gsap";
 
 export default function MyNavigationMenuMobile() {
@@ -53,10 +54,13 @@ export default function MyNavigationMenuMobile() {
           id="menu-links"
           className="h-svh flex flex-col items-center justify-center pb-16 text-2xl"
         >
+          <div className="py-4">
+            <ThemeToggle />
+          </div>
           {menuItems.map((item) => (
             <li
               key={item.href}
-              className="flex justify-center first:border-t border-b border-dashed w-full py-12"
+              className="flex justify-center border-t last:border-b border-dashed w-full py-12"
             >
               <a href={item.href}>{item.label}</a>
             </li>

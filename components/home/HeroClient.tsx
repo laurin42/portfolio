@@ -24,7 +24,7 @@ export default function HeroClient({
       className="h-svh px-4 flex flex-col justify-center items-center font-funnel"
     >
       <div className="flex flex-col justify-center">
-        <h1 className="text-4xl sm:text-8xl text-left">
+        <h1 className="text-2xl sm:text-2xl md:text-6xl lg:text-8xl text-left leading-2 md:leading-20">
           Hello<span className="text-accent">, </span>I am Laurin
           <span className="text-accent">.</span>
         </h1>
@@ -32,7 +32,7 @@ export default function HeroClient({
         <p
           className={`${
             animationDone ? "opacity-100" : "opacity-0"
-          } text-right text-2xl transition-opacity duration-300`}
+          } text-right text-sm sm:text-md md:text-xl lg:text-2xl leading-1 md:leading-6 transition-opacity duration-300`}
         >
           based in Düsseldorf, Germany
         </p>

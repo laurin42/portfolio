@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import MyNavigationMenuDesktop from "./NavigationMenuDesktop";
 import MyNavigationMenuMobile from "./NavigationMenuMobile";
-import { ThemeToggle } from "./ThemeToggle";
 
 export default function Header({ isMenuVisible }: { isMenuVisible: boolean }) {
   return (
@@ -15,7 +14,6 @@ export default function Header({ isMenuVisible }: { isMenuVisible: boolean }) {
     >
       <div className="w-full flex justify-end md:justify-center">
         <MyNavigationMenuDesktop />
-        <ThemeToggle />
         <MyNavigationMenuMobile />
       </div>
     </motion.header>

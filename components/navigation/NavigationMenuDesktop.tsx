@@ -6,6 +6,7 @@ import {
   Viewport,
   Indicator,
 } from "@radix-ui/react-navigation-menu";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface NavItemProps {
   href: string;
@@ -17,7 +18,7 @@ function NavItem({ href, children }: NavItemProps) {
     <Item className="group">
       <Link
         href={href}
-        className="relative text-2xl font-light group-hover:text-accent/80 transition-colors duration-150 
+        className="relative text-xl lg:text-2xl font-light group-hover:text-accent/80 transition-colors duration-150 
                after:content-[''] after:absolute after:left-0 after:bottom-0 
                after:h-[1%] after:w-full after:bg-accent 
                after:origin-left after:scale-x-0 
@@ -43,6 +44,7 @@ export default function MyNavigationMenuDesktop() {
             <span className="group-hover:text-foreground/80"> / </span>
             Impressum
           </NavItem>
+          <ThemeToggle />
 
           <Indicator />
         </List>

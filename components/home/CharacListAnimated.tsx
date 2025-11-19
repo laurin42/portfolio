@@ -9,6 +9,8 @@ const characteristics = [
   "curious",
   "dedicated",
   "adaptable",
+  "",
+  "",
   "webdeveloper",
 ];
 
@@ -79,9 +81,9 @@ export default function CharacteristicsListAnimated({
         {characteristics.map((charac, id) => (
           <li
             key={id}
-            className={`h-10 sm:h-35px w-full flex items-center justify-end text-accent text-2xl sm:text-4xl transition-opacity duration-300 ${
+            className={`h-10 sm:h-35px w-full flex items-center justify-end text-accent text-md sm:text-xl md:text-2xl lg:text-4xl transition-opacity duration-300 ${
               id >= activeIndex ? "opacity-100" : "opacity-0"
-            }`}
+            } `}
           >
             {id === characteristics.length - 1 && id === activeIndex ? (
               <>{charac}</>
