@@ -8,10 +8,11 @@ export default function MyNavigationMenuMobile() {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { href: "#home", label: "Home" },
+    { href: "/", label: "Home" },
+    { href: "#stack", label: "Stack" },
     { href: "#projects", label: "Projects" },
+    { href: "#experience", label: "Experience" },
     { href: "#contact", label: "Contact" },
-    { href: "#legal", label: "Legal Notice / Impressum" },
   ];
 
   return (

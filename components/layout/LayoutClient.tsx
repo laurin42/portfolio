@@ -3,6 +3,11 @@
 import { useState, useCallback } from "react";
 import HeroClient from "../home/HeroClient";
 import Header from "../navigation/Header";
+import FrontendStack from "../stack/FrontendStack";
+import BackendStack from "../stack/BackendStack";
+import Projects from "../projects/Projects";
+import Experience from "../experience/Experience";
+import Contact from "../contact/Contact";
 
 export default function LayoutClient() {
   const [animationDone, setAnimationDone] = useState(false);
@@ -13,6 +18,11 @@ export default function LayoutClient() {
     <>
       <Header isMenuVisible={animationDone} />
       <HeroClient onAnimationComplete={handleAnimationComplete} />
+      <FrontendStack />
+      <BackendStack />
+      <Projects />
+      <Experience />
+      <Contact />
     </>
   );
 }

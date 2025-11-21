@@ -129,46 +129,47 @@ body {
   }
 }
 
-.last-enter {
-  opacity: 0;
-  transform: translateX(50px);
-}
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
-.last-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: all 0.5s ease-in-out;
-}
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(3rem);
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(3rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(3rem);
+  .animate-fadeIn {
+    animation: fadeIn 0.4s ease-out forwards;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(12px);
+  .animate-fadeInUp {
+    animation: fadeInUp 0.4s ease-in-out forwards;
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+
+  .animate-fadeInRight {
+    animation: fadeInRight 0.5s ease-in-out forwards;
   }
 }

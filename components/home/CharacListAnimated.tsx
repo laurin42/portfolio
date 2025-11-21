@@ -45,20 +45,22 @@ export default function CharacListAnimated({
   return (
     <h2
       role="text"
-      aria-live="polite"
       className="inline-block h-10 sm:h-36px overflow-hidden align-bottom"
     >
-      <ul className="list-none m-0 p-0">
-        <li
-          className={`
-            h-10 sm:h-35px w-full flex items-center justify-end 
-            text-accent text-md sm:text-xl md:text-2xl lg:text-4xl
-            transition-opacity duration-500 opacity-100
-         `}
-        >
-          {characteristics[activeIndex]}
-        </li>
-      </ul>
+      {characteristics.map((charac, id) =>
+        id === activeIndex ? (
+          <div
+            key={id}
+            className="
+              h-10 sm:h-35px w-full flex items-center justify-end
+              text-accent text-md sm:text-xl md:text-2xl lg:text-4xl
+              animate-fadeInRight
+            "
+          >
+            {charac}
+          </div>
+        ) : null
+      )}
     </h2>
   );
 }

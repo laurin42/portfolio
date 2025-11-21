@@ -36,14 +36,11 @@ export default function MyNavigationMenuDesktop() {
     <div className="hidden md:block">
       <Root className="py-4 px-16 border-b-4 border-t-4 border-r-2 border-l-2 border-foreground">
         <List className="flex gap-x-8">
-          <NavItem href="home">Home</NavItem>
+          <NavItem href="/">Home</NavItem>
+          <NavItem href="stack">Stack</NavItem>
           <NavItem href="projects">Projects</NavItem>
+          <NavItem href="experience">Experience</NavItem>
           <NavItem href="contact">Contact</NavItem>
-          <NavItem href="legal">
-            Legal
-            <span className="group-hover:text-foreground/80"> / </span>
-            Impressum
-          </NavItem>
           <ThemeToggle />
 
           <Indicator />
