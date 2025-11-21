@@ -8,6 +8,7 @@ import BackendStack from "../stack/BackendStack";
 import Projects from "../projects/Projects";
 import Experience from "../experience/Experience";
 import Contact from "../contact/Contact";
+import Footer from "../navigation/Footer";
 
 export default function LayoutClient() {
   const [animationDone, setAnimationDone] = useState(false);
@@ -23,6 +24,7 @@ export default function LayoutClient() {
       <Projects />
       <Experience />
       <Contact />
+      <Footer />
     </>
   );
 }

@@ -27,7 +27,7 @@ export function ThemeToggle() {
     <button
       onClick={() => setTheme(nextTheme)}
       aria-label="Toggle theme"
-      className="relative mx-2"
+      className="relative mx-2 cursor-pointer"
     >
       <Sun
         size={34}

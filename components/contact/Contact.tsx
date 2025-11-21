@@ -1,9 +1,10 @@
 export default function Contact() {
   return (
-    <section className="min-h-svh w-full flex flex-col justify-center items-center">
-      <div>
-        <h2>Contact</h2>
-      </div>
+    <section className="min-h-screen flex flex-col justify-center items-center bg-background font-funnel">
+      <h2 className="text-3xl sm:text-5xl pb-2 mb-4 drop-shadow-lg w-fit border-b border-foreground/32">
+        Say hello
+      </h2>
+      <p>Let&apos;s build something great together</p>
     </section>
   );
 }
