@@ -1,31 +1,11 @@
 "use client";
 
 import { IoMenu as Menu, IoClose as Close } from "react-icons/io5";
-import { useEffect, useRef, RefObject } from "react";
+import { useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
-import gsap from "gsap";
 
 export default function MyNavigationMenuMobile() {
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const timeline: RefObject<GSAPTimeline | null> = useRef(null);
-
-  useEffect(() => {
-    if (!mobileMenuRef.current) return;
-
-    gsap.set(mobileMenuRef.current, { autoAlpha: 0 });
-
-    timeline.current = gsap.timeline({ paused: true });
-    timeline.current
-      .to(mobileMenuRef.current, {
-        autoAlpha: 1,
-        duration: 0.3,
-        ease: "power2.inOut",
-      })
-      .from("#close-icon", { autoAlpha: 0, duration: 0.2 }, "<0.1");
-  }, []);
-
-  const openMenu = () => timeline.current?.play();
-  const closeMenu = () => timeline.current?.reverse();
+  const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
     { href: "#home", label: "Home" },
@@ -37,23 +17,31 @@ export default function MyNavigationMenuMobile() {
   return (
     <div className="md:hidden">
       <nav className="flex justify-end">
-        <button id="menu-icon" onClick={openMenu}>
+        <button onClick={() => setIsOpen(true)} aria-label="Open menu">
           <Menu className="w-12 h-12" />
         </button>
       </nav>
 
       <div
-        ref={mobileMenuRef}
-        className="fixed top-0 left-0 right-0 w-full h-screen bg-background p-4 z-10 flex flex-col"
+        className={`
+          fixed top-0 left-0 w-full h-screen bg-background p-4 z-10 flex flex-col
+          transition-all duration-300 ease-in-out
+          ${
+            isOpen
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 -translate-y-5 pointer-events-none"
+          }
+        `}
       >
-        <button id="close-icon" onClick={closeMenu} className="self-end">
+        <button
+          onClick={() => setIsOpen(false)}
+          className="self-end mb-4"
+          aria-label="Close menu"
+        >
           <Close className="w-12 h-12" />
         </button>
 
-        <ul
-          id="menu-links"
-          className="h-svh flex flex-col items-center justify-center pb-16 text-2xl"
-        >
+        <ul className="h-svh flex flex-col items-center justify-center pb-16 text-2xl">
           <div className="py-4">
             <ThemeToggle />
           </div>

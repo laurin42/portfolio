@@ -34,7 +34,7 @@ function NavItem({ href, children }: NavItemProps) {
 export default function MyNavigationMenuDesktop() {
   return (
     <div className="hidden md:block">
-      <Root className="py-4 px-16 border-b-4 border-t-4 border-r-2 border-l-2 border-foreground/80">
+      <Root className="py-4 px-16 border-b-4 border-t-4 border-r-2 border-l-2 border-foreground">
         <List className="flex gap-x-8">
           <NavItem href="home">Home</NavItem>
           <NavItem href="projects">Projects</NavItem>
