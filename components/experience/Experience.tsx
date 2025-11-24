@@ -1,38 +1,83 @@
 "use client";
 
-export default function Experience() {
-  const experiences = [
-    {
-      title: "Beginning",
-      description:
-        "Internship at StartUp Werk in Oberhausen. Gained first insights. Time of learning fundamental concepts in programming",
-    },
-    {
-      title: "It's getting serious",
-      description:
-        "8 Months Course Full Stack Webdeveloper. Getting deeper into the concepts. Focus on Python, HTML, CSS, Databases, Frameworks",
-    },
-    {
-      title: "Self teaching",
-      description:
-        "exploring, learning through Projects. Really understand the overall picture I am moving in. try to learn something new everyday. Most growth in Knowledge for me comes through trying out",
-    },
-  ];
+"use client";
 
+const experiences = [
+  {
+    title: "Internship & Foundational Technical Skills",
+    period: "May 2024",
+    company: "StartUp Werk | Oberhausen",
+    description:
+      "Entry into software development by contributing to smaller internal projects. Focus on code structuring and acquiring fundamental database concepts (SQL), as well as proficiency in version control (Git).",
+    tags: ["HTML", "CSS", "JavaScript", "Git"],
+  },
+  {
+    title: "Intensive Full-Stack Training",
+    period: "July 2024 – March 2025",
+    company: "8-Month Bootcamp/Course",
+    description:
+      "In-depth training as a Full-Stack Web Developer. Core competencies included Backend development with Python and the Django Framework, and utilizing database modeling (ORM) for scalable web applications.",
+    tags: [
+      "Python",
+      "Django",
+      "Databases(SQL)",
+      "HTML",
+      "Tailwind CSS & SASS",
+      "JavaScript",
+      "REST APIs",
+    ],
+  },
+  {
+    title: "Project-Based Self-Study & Specialization",
+    period: "March 2025 – Present",
+    company: "Independent Projects",
+    description:
+      "Self-directed specialization in modern Frontend and the React/Next.js and TypeScript ecosystems. Development of personal projects aimed at establishing clean code practices and mastering modern state management concepts. Goal: Continuous growth through practical application.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Docker",
+      "PostgreSQL",
+      "Node.js",
+    ],
+  },
+];
+
+export default function Experience() {
   return (
-    <section className="w-full bg-background">
+    <section id="experience" className="bg-background text-foreground">
       {experiences.map((experience) => (
         <div
           key={experience.title}
-          className="relative h-screen w-full flex flex-col justify-center items-center text-foreground text-center font-funnel px-4"
+          className="relative min-h-screen max-w-5xl mx-auto flex flex-col justify-center items-center font-funnel px-4 py-24"
         >
-          <div className="relative z-10">
-            <h3 className="text-3xl sm:text-5xl pb-2 mb-2 drop-shadow-sm border-b border-foreground/32">
+          <div className="relative z-10 w-full text-center">
+            <p className="text-sm sm:text-lg text-primary/70 mb-1">
+              {experience.period} | {experience.company}
+            </p>
+
+            <h3
+              className="max-w-2xl mx-auto text-3xl sm:text-5xl pb-2 mb-4 
+                           drop-shadow-sm border-b border-primary/50 font-semibold"
+            >
               {experience.title}
             </h3>
-            <p className="text-lg sm:text-2xl max-w-xl drop-shadow-lg">
+
+            <p className="text-base sm:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto drop-shadow-lg leading-relaxed">
               {experience.description}
             </p>
+
+            <div className="flex flex-wrap justify-center gap-2 mt-4">
+              {experience.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 text-xs font-medium border"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       ))}

@@ -1,0 +1,152 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+type ProjectCardType = {
+  title: string;
+  description: string;
+  link?: string;
+  screenshots?: string[];
+  details?: string[];
+  icons?: string[];
+};
+
+export default function ProjectCard({ project }: { project: ProjectCardType }) {
+  const [visible, setVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = cardRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setVisible(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -200px 0px" }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.unobserve(element);
+    };
+  }, []);
+
+  return (
+    <div className="w-full h-svh my-16 sm:my-32 sm:h-full flex flex-col justify-center items-center">
+      <Card
+        ref={cardRef}
+        className={`relative
+          min-h-2/3 sm:h-full
+          w-7/8 sm:w-2/3 xl:w-1/2
+          text-foreground
+          text-center
+          font-funnel
+          mb-6
+          transition-all duration-800
+        `}
+      >
+        <CardHeader>
+          <CardTitle
+            className={`text-3xl sm:text-4xl transition-opacity duration-1200 w-fit mx-auto pb-1 mb-2
+            ${
+              visible
+                ? "border-b border-foreground/64 drop-shadow-sm"
+                : "border-none"
+            }`}
+          >
+            {project.link && (
+              <Link
+                href={project.link}
+                target="blank"
+                className="hover:text-accent transition duration-300"
+              >
+                {project.title}
+              </Link>
+            )}
+          </CardTitle>
+          <CardDescription
+            className={`text-md sm:text-xl pb-4 sm:pb-0 max-w-xl drop-shadow-lg mx-auto transition-opacity duration-1400`}
+          >
+            {project.description}
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent
+          className={`px-0 flex justify-center items-end transition-opacity duration-1600 ${
+            visible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {project.screenshots?.[0] && (
+            <div className="relative w-3/3 sm:w-3/3 z-10">
+              <Image
+                src={project.screenshots[0]}
+                width={1600}
+                height={1000}
+                alt={`${project.title} laptop mockup`}
+                className="w-full h-auto"
+              />
+            </div>
+          )}
+          {project.screenshots?.[1] && (
+            <div className="relative w-1/3 sm:w-1/4 -ml-24 z-20">
+              <Image
+                src={project.screenshots[1]}
+                width={800}
+                height={1600}
+                alt={`${project.title} mobile mockup`}
+                className="w-full h-auto"
+              />
+            </div>
+          )}
+          {project.icons &&
+            project.icons.map((src, i) => (
+              <div key={i} className="p-8">
+                <Image
+                  src={src}
+                  alt="icon"
+                  width={100}
+                  height={100}
+                  className="w-12 h-12 sm:w-24 sm:h-24 dark:invert"
+                />
+              </div>
+            ))}
+        </CardContent>
+
+        <CardFooter
+          className={`pt-8 flex flex-col justify-center transition-opacity duration-1800 ease-out ${
+            visible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {project.details && (
+            <CardDescription className="text-balance">
+              {project.details}
+            </CardDescription>
+          )}
+          {project.link && (
+            <Link
+              href={project.link}
+              target="_blank"
+              className="hover:text-accent transition-opacity duration-2200 underline"
+            >
+              Visit project
+            </Link>
+          )}
+        </CardFooter>
+      </Card>
+    </div>
+  );
+}

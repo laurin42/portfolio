@@ -1,56 +1,39 @@
 "use client";
 
-import Link from "next/link";
+import ProjectCard from "./ProjectCard";
 
 export default function Projects() {
   const projects = [
     {
       title: "Wetterstrucksi.de",
-      description:
-        "Next.js local weather Website with headless Ghost API integration, responsive and dynamic UI.",
+      description: "No fluff. Just weather.",
       link: "https://wetterstrucksi.de",
+      screenshots: [
+        "/images/projects/wetterstrucksi/laptopMockup.png",
+        "/images/projects/wetterstrucksi/mobileMockup.png",
+      ],
+      details: [
+        "Modern, responsive redesign and migration from wordpress to ghost(headless) for hobby-metereologist Jens Strucks, improving the experience for his audience of 10,000+ followers.",
+      ],
     },
     {
       title: "Burnheart Mockery",
-      description: "Custom & Responsive Bandpage.",
+      description: "Custom riffs online",
       link: "https://burnheart-mockery.de",
-    },
-    {
-      title: "Experimentation",
-      description:
-        "Various small projects to practice React, Next.js, and JavaScript concepts.",
-      link: "https://github.com/laurin42",
+      screenshots: [
+        "/images/projects/burnheartMockery/laptopMockup.png",
+        "/images/projects/burnheartMockery/mobileMockup.png",
+      ],
+      details: [
+        "A fully custom, responsive band website featuring a contact form, newsletter system, integrated audio player for the latest releases, and planned ticket sales via an in-house shop.",
+      ],
     },
   ];
 
   return (
-    <section className="w-full bg-background">
+    <section className="min-h-screen">
       {projects.map((project) => (
-        <div
-          key={project.title}
-          className="relative h-screen w-full flex flex-col justify-center items-center text-foreground text-center font-funnel px-4"
-        >
-          <div className="relative z-10">
-            {project.link ? (
-              <Link
-                href={project.link}
-                target="_blank"
-                className="hover:text-accent transition-colors duration-300"
-              >
-                <h3 className="text-3xl sm:text-5xl pb-2 mb-2 mx-auto drop-shadow-sm  w-fit border-b border-foreground/32">
-                  {project.title}
-                </h3>
-              </Link>
-            ) : (
-              <h3 className="text-3xl sm:text-5xl pb-2 mb-2 drop-shadow-sm border-b border-foreground/32">
-                {project.title}
-              </h3>
-            )}
-            <p className="text-lg sm:text-2xl max-w-xl drop-shadow-lg">
-              {project.description}
-            </p>
-          </div>
-        </div>
+        <ProjectCard key={project.title} project={project} />
       ))}
     </section>
   );
