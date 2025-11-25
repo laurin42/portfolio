@@ -61,7 +61,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
       >
         <CardHeader>
           <CardTitle
-            className={`text-3xl sm:text-6xl transition-opacity duration-1200 w-fit mx-auto pb-1 mb-2
+            className={`text-3xl sm:text-6xl transition-opacity duration-1200 w-fit mx-auto pb-2 mb-1
             ${
               visible
                 ? "border-b border-foreground/64 drop-shadow-sm"

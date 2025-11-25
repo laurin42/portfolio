@@ -1,6 +1,5 @@
 "use client";
-
-"use client";
+import { useEffect, useRef, useState } from "react";
 
 const experiences = [
   {
@@ -45,42 +44,85 @@ const experiences = [
 ];
 
 export default function Experience() {
+  const [scrollProgress, setScrollProgress] = useState<number[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const section = sectionRef.current;
+      const sectionTop = section.offsetTop;
+      const scrollY = window.scrollY;
+
+      const progress = experiences.map((_, index) => {
+        const start = sectionTop + index * window.innerHeight;
+        const end = start + window.innerHeight;
+
+        if (scrollY < start) return 0;
+        if (scrollY > end) return 1;
+
+        return (scrollY - start) / window.innerHeight;
+      });
+
+      setScrollProgress(progress);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section id="experience" className="bg-background text-foreground">
-      {experiences.map((experience) => (
-        <div
-          key={experience.title}
-          className="relative min-h-screen max-w-5xl mx-auto flex flex-col justify-center items-center font-funnel px-4 py-24"
-        >
-          <div className="relative z-10 w-full text-center">
-            <p className="text-sm sm:text-lg text-primary/70 mb-1">
-              {experience.period} | {experience.company}
-            </p>
+    <section
+      ref={sectionRef}
+      id="experience"
+      className="relative w-full bg-linear-to-b from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%"
+      style={{ height: `${(experiences.length + 1) * 100}vh` }}
+    >
+      {experiences.map((experience, index) => {
+        const progress = scrollProgress[index] || 0;
 
-            <h3
-              className="max-w-2xl mx-auto text-3xl sm:text-5xl pb-2 mb-4 
-                           drop-shadow-sm border-b border-primary/50 font-semibold"
-            >
-              {experience.title}
-            </h3>
+        let translateX;
+        if (progress < 0.5) {
+          translateX = -100 + progress * 200;
+        } else {
+          translateX = (progress - 0.5) * 200;
+        }
 
-            <p className="text-base sm:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto drop-shadow-lg leading-relaxed">
-              {experience.description}
-            </p>
+        return (
+          <div
+            key={experience.title}
+            className="sticky top-0 w-full right-0 h-screen flex items-center justify-center bg-background text-foreground font-funnel px-4"
+            style={{
+              zIndex: index + 1,
+              transform: `translateX(${translateX}%)`,
+            }}
+          >
+            <div className="w-full text-center max-w-5xl">
+              <p className="text-sm sm:text-lg text-primary/70 mb-1">
+                {experience.period} | {experience.company}
+              </p>
 
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              {experience.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 text-xs font-medium border"
-                >
-                  {tag}
-                </span>
-              ))}
+              <h3 className="text-3xl sm:text-5xl max-w-2xl mx-auto pb-2 mb-4 border-b border-primary/50 font-semibold">
+                {experience.title}
+              </h3>
+
+              <p className="text-base sm:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
+                {experience.description}
+              </p>
+
+              <div className="flex flex-wrap justify-center gap-2">
+                {experience.tags.map((tag) => (
+                  <span key={tag} className="px-3 py-1 text-xs border">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </section>
   );
 }

@@ -87,10 +87,10 @@ export default function Stack({
       {blocks.map((block, index) => (
         <div
           key={block.title}
-          className={`sticky top-0 h-screen flex flex-col items-center justify-center text-accent-foreground font-funnel ${block.bgColor}`}
+          className={`sticky top-0 h-screen flex flex-col items-center justify-center text-white font-funnel ${block.bgColor}`}
           style={{ zIndex: index + 1 }}
         >
-          <h2 className="text-4xl sm:text-7xl tracking-wide font-funnel bg-background px-1">
+          <h2 className="text-4xl sm:text-7xl tracking-wide font-funnel bg-black px-1">
             {block.title}
           </h2>
           <p className="font-thin text-3xl pt-4 pb-1 mb-8 border-b border-background/32">
