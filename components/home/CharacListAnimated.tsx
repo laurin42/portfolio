@@ -52,7 +52,7 @@ export default function CharacListAnimated({
           <div
             key={id}
             className="
-              h-10 sm:h-35px w-full flex items-center justify-end
+              h-10 sm:h-35px w-full flex items-center justify-center
               text-accent text-md sm:text-xl md:text-2xl lg:text-4xl
               animate-fadeInRight
             "

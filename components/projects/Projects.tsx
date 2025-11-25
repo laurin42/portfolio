@@ -28,6 +28,11 @@ export default function Projects() {
         "A fully custom, responsive band website featuring a contact form, newsletter system, integrated audio player for the latest releases, and planned ticket sales via an in-house shop.",
       ],
     },
+    {
+      title: "Code Playground - My GitHub Profile",
+      description: "Build, Break, Learn",
+      link: "https://github.com/laurin42",
+    },
   ];
 
   return (

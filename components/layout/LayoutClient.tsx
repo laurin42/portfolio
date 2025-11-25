@@ -3,8 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import HeroClient from "../home/HeroClient";
 import Header from "../navigation/Header";
-import FrontendStack from "../stack/FrontendStack";
-import BackendStack from "../stack/BackendStack";
+import Stack from "../stack/Stack";
 import Projects from "../projects/Projects";
 import Experience from "../experience/Experience";
 import Contact from "../contact/Contact";
@@ -49,18 +48,20 @@ export default function LayoutClient() {
 
   return (
     <>
-      <div className="fixed left-8 md:bottom-4 text-center w-fit -translate-y-1/2 z-50">
-        {sections.map((section) => (
-          <span
-            key={section.id}
-            className={`absolute transform sm:-translate-y-1/2 sm:-rotate-90 sm:origin-left transition-opacity duration-500 text-4xl sm:text-6xl tracking-wider font-funnel font-semibold ${
-              activeSection === section.id ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            {section.label}
-          </span>
-        ))}
-      </div>
+      {animationDone && (
+        <div className="fixed top-4 left-8 -translate-y-1/2 z-50 animate-fadeIn">
+          {sections.map((section) => (
+            <span
+              key={section.id}
+              className={`absolute transform text-shadow-xs text-shadow-background/32 transition-opacity duration-500 text-3xl sm:text-5xl tracking-wider font-funnel font-semibold ${
+                activeSection === section.id ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {section.label}
+            </span>
+          ))}
+        </div>
+      )}
 
       <div
         id="home"
@@ -72,16 +73,12 @@ export default function LayoutClient() {
         <HeroClient onAnimationComplete={handleAnimationComplete} />
       </div>
 
-      <div
+      <Stack
         id="stack"
         ref={(el) => {
           sectionRefs.current["stack"] = el;
         }}
-      >
-        <FrontendStack />
-
-        <BackendStack />
-      </div>
+      />
 
       <div
         id="projects"

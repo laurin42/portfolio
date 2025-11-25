@@ -46,13 +46,13 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
   }, []);
 
   return (
-    <div className="w-full h-svh my-16 sm:my-32 sm:h-full flex flex-col justify-center items-center">
+    <div className="w-full min-h-svh sm:h-full flex flex-col justify-center items-center py-32">
       <Card
         ref={cardRef}
         className={`relative
           min-h-2/3 sm:h-full
           w-7/8 sm:w-2/3 xl:w-1/2
-          text-foreground
+          text-accent-foreground
           text-center
           font-funnel
           mb-6
@@ -61,7 +61,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
       >
         <CardHeader>
           <CardTitle
-            className={`text-3xl sm:text-4xl transition-opacity duration-1200 w-fit mx-auto pb-1 mb-2
+            className={`text-3xl sm:text-6xl transition-opacity duration-1200 w-fit mx-auto pb-1 mb-2
             ${
               visible
                 ? "border-b border-foreground/64 drop-shadow-sm"
@@ -79,7 +79,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
             )}
           </CardTitle>
           <CardDescription
-            className={`text-md sm:text-xl pb-4 sm:pb-0 max-w-xl drop-shadow-lg mx-auto transition-opacity duration-1400`}
+            className={`text-md sm:text-2xl pb-4 sm:pb-0 max-w-xl drop-shadow-lg mx-auto transition-opacity duration-1400`}
           >
             {project.description}
           </CardDescription>
@@ -98,6 +98,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
                 height={1000}
                 alt={`${project.title} laptop mockup`}
                 className="w-full h-auto"
+                loading="eager"
               />
             </div>
           )}
@@ -132,17 +133,26 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
           }`}
         >
           {project.details && (
-            <CardDescription className="text-balance">
+            <CardDescription className="text-balance text-lg">
               {project.details}
             </CardDescription>
           )}
-          {project.link && (
+          {project.link && project.screenshots && (
             <Link
               href={project.link}
               target="_blank"
               className="hover:text-accent transition-opacity duration-2200 underline"
             >
               Visit project
+            </Link>
+          )}
+          {project.link && !project.screenshots && (
+            <Link
+              href={project.link}
+              target="_blank"
+              className="-mt-4 hover:text-accent transition-opacity duration-2200 underline"
+            >
+              Visit Profile
             </Link>
           )}
         </CardFooter>

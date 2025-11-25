@@ -16,8 +16,8 @@ export default function MyNavigationMenuMobile() {
   ];
 
   return (
-    <div className="md:hidden">
-      <nav className="flex justify-end">
+    <div className="">
+      <nav className="flex justify-end pr-4">
         <button onClick={() => setIsOpen(true)} aria-label="Open menu">
           <Menu className="w-12 h-12" />
         </button>
@@ -43,9 +43,6 @@ export default function MyNavigationMenuMobile() {
         </button>
 
         <ul className="h-svh flex flex-col items-center justify-center pb-16 text-2xl">
-          <div className="py-4">
-            <ThemeToggle />
-          </div>
           {menuItems.map((item) => (
             <li
               key={item.href}
