@@ -93,7 +93,7 @@ export default function Stack({
           <h2 className="text-4xl sm:text-7xl tracking-wide font-funnel bg-black px-1">
             {block.title}
           </h2>
-          <p className="font-thin text-3xl pt-4 pb-1 mb-8 border-b border-background/32">
+          <p className="font-thin text-3xl pt-4 pb-1 mb-8 border-b border-black/32 text-black">
             {block.text}
           </p>
           <div className="flex gap-8">{renderIcons(block.icons)}</div>

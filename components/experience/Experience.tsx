@@ -1,6 +1,9 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 const experiences = [
   {
     title: "Internship & Foundational Technical Skills",
@@ -43,86 +46,97 @@ const experiences = [
   },
 ];
 
+const backgrounds = [
+  "bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%",
+  "bg-gradient-to-r from-emerald-500 from-10% via-lime-500 via-30% to-yellow-500 to-90%",
+  "bg-gradient-to-r from-yellow-500 from-10% via-amber-500 via-30% to-orange-500 to-90%",
+];
+
 export default function Experience() {
-  const [scrollProgress, setScrollProgress] = useState<number[]>([]);
-  const sectionRef = useRef<HTMLElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
+  useLayoutEffect(() => {
+    const blocks = gsap.utils.toArray<HTMLElement>(".block");
+    if (!wrapRef.current || blocks.length === 0) return;
 
-      const section = sectionRef.current;
-      const sectionTop = section.offsetTop;
-      const scrollY = window.scrollY;
+    const count = blocks.length;
+    const progressPerSection = 1 / (count - 1);
+    let tween: gsap.core.Tween;
 
-      const progress = experiences.map((_, index) => {
-        const start = sectionTop + index * window.innerHeight;
-        const end = start + window.innerHeight;
+    const ctx = gsap.context(() => {
+      tween = gsap.to(blocks, {
+        xPercent: -100 * (count - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: wrapRef.current,
+          pin: true,
+          scrub: true,
+          end: () => "+=" + window.innerWidth * (count - 1),
+          onScrubComplete: (self) => {
+            const velocity = self.getVelocity();
+            const direction = velocity >= 0 ? 1 : -1;
 
-        if (scrollY < start) return 0;
-        if (scrollY > end) return 1;
+            const rawIndex = self.progress / progressPerSection;
+            const targetIndex = Math.round(rawIndex + 0.15 * direction);
 
-        return (scrollY - start) / window.innerHeight;
+            const nearest = gsap.utils.clamp(0, count - 1, targetIndex);
+
+            gsap.to(tween, {
+              progress: nearest * progressPerSection,
+              duration: 0.45,
+              ease: "power3.out",
+            });
+          },
+        },
       });
 
-      setScrollProgress(progress);
-    };
+      ScrollTrigger.create({
+        trigger: ".animate-inside",
+        containerAnimation: tween,
+        start: "left center",
+        scrub: true,
+      });
+    }, wrapRef);
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      id="experience"
-      className="relative w-full bg-linear-to-b from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%"
-      style={{ height: `${(experiences.length + 1) * 100}vh` }}
-    >
-      {experiences.map((experience, index) => {
-        const progress = scrollProgress[index] || 0;
-
-        let translateX;
-        if (progress < 0.5) {
-          translateX = -100 + progress * 200;
-        } else {
-          translateX = (progress - 0.5) * 200;
-        }
-
-        return (
+    <section ref={wrapRef} className="w-full h-svh overflow-hidden">
+      <div
+        className="h-svh flex"
+        style={{ width: `${experiences.length * 100}svw` }}
+      >
+        {experiences.map((exp, i) => (
           <div
-            key={experience.title}
-            className="sticky top-0 w-full right-0 h-screen flex items-center justify-center bg-background text-foreground font-funnel px-4"
-            style={{
-              zIndex: index + 1,
-              transform: `translateX(${translateX}%)`,
-            }}
+            key={i}
+            className={`block w-svw h-svh flex items-center justify-center font-funnel ${
+              backgrounds[i % backgrounds.length]
+            }`}
           >
-            <div className="w-full text-center max-w-5xl">
-              <p className="text-sm sm:text-lg text-primary/70 mb-1">
-                {experience.period} | {experience.company}
-              </p>
-
-              <h3 className="text-3xl sm:text-5xl max-w-2xl mx-auto pb-2 mb-4 border-b border-primary/50 font-semibold">
-                {experience.title}
-              </h3>
-
-              <p className="text-base sm:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
-                {experience.description}
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-2">
-                {experience.tags.map((tag) => (
-                  <span key={tag} className="px-3 py-1 text-xs border">
-                    {tag}
-                  </span>
-                ))}
+            <div className="animate-inside">
+              <div className="max-w-3xl mx-auto text-center bg-background p-6 rounded-xs shadow-lg">
+                <p className="w-fit mx-auto bg-foreground text-sm sm:text-lg text-background p-1 mb-4">
+                  {exp.period} | {exp.company}
+                </p>
+                <h3 className="w-fit mx-auto text-3xl sm:text-5xl pb-2 mb-4 border-b border-primary/50 font-semibold">
+                  {exp.title}
+                </h3>
+                <p className="text-left pl-2 sm:text-xl text-muted-foreground mb-6">
+                  {exp.description}
+                </p>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {exp.tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 text-xs border">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        );
-      })}
+        ))}
+      </div>
     </section>
   );
 }
