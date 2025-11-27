@@ -46,7 +46,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
   }, []);
 
   return (
-    <div className="w-full min-h-svh sm:h-full flex flex-col justify-center items-center py-32">
+    <div className="w-full min-h-svh sm:h-full flex flex-col justify-center items-center">
       <Card
         ref={cardRef}
         className={`relative
@@ -61,25 +61,23 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
       >
         <CardHeader>
           <CardTitle
-            className={`text-3xl sm:text-6xl transition-opacity duration-1200 w-fit mx-auto pb-2 mb-1
-            ${
-              visible
-                ? "border-b border-foreground/64 drop-shadow-sm"
-                : "border-none"
-            }`}
+            className={`text-3xl sm:text-4xl transition-opacity duration-1200 w-fit mx-auto pb-2 mb-1 border-b border-foreground/32
+            ${visible ? "opacity-100" : "opacity-0"}`}
           >
             {project.link && (
               <Link
                 href={project.link}
                 target="blank"
-                className="hover:text-accent transition duration-300"
+                className="hover:text-accent transition-opacity duration-1200"
               >
                 {project.title}
               </Link>
             )}
           </CardTitle>
           <CardDescription
-            className={`text-md sm:text-2xl pb-4 sm:pb-0 max-w-xl drop-shadow-lg mx-auto transition-opacity duration-1400`}
+            className={`text-md sm:text-xl pb-4 sm:pb-0 max-w-xl drop-shadow-lg mx-auto transition-opacity duration-1400
+            ${visible ? "opacity-100" : "opacity-0"}
+              `}
           >
             {project.description}
           </CardDescription>
@@ -97,19 +95,19 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
                 width={1600}
                 height={1000}
                 alt={`${project.title} laptop mockup`}
-                className="w-full h-auto"
+                className="w-3/4 h-3/4"
                 loading="eager"
               />
             </div>
           )}
           {project.screenshots?.[1] && (
-            <div className="relative w-1/3 sm:w-1/4 -ml-24 z-20">
+            <div className="relative w-1/3 sm:w-1/4 -ml-59 z-20">
               <Image
                 src={project.screenshots[1]}
                 width={800}
                 height={1600}
                 alt={`${project.title} mobile mockup`}
-                className="w-full h-auto"
+                className="w-3/4 h-3/4"
               />
             </div>
           )}
@@ -128,7 +126,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
         </CardContent>
 
         <CardFooter
-          className={`pt-8 flex flex-col justify-center transition-opacity duration-1800 ease-out ${
+          className={`pt-4 flex flex-col justify-center transition-opacity duration-1800 ease-out ${
             visible ? "opacity-100" : "opacity-0"
           }`}
         >

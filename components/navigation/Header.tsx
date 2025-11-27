@@ -16,7 +16,7 @@ export default function Header({ isMenuVisible }: { isMenuVisible: boolean }) {
     <header
       className={`
         fixed top-0 left-0 w-full z-49 p-2 flex justify-between items-center font-funnel 
-        transition-opacity duration-300
+        transition-opacity duration-300 
         ${visible ? "opacity-100" : "opacity-0"}
       `}
     >

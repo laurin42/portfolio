@@ -10,7 +10,7 @@ const experiences = [
     period: "May 2024",
     company: "StartUp Werk | Oberhausen",
     description:
-      "Entry into software development by contributing to smaller internal projects. Focus on code structuring and acquiring fundamental database concepts (SQL), as well as proficiency in version control (Git).",
+      "Entry into software development by contributing to smaller internal projects. Focus on code structuring and acquiring fundamental programming concepts, as well as proficiency in version control (Git).",
     tags: ["HTML", "CSS", "JavaScript", "Git"],
   },
   {
@@ -30,11 +30,11 @@ const experiences = [
     ],
   },
   {
-    title: "Project-Based Self-Study & Specialization",
+    title: "Self-Study & Specialization",
     period: "March 2025 – Present",
     company: "Independent Projects",
     description:
-      "Self-directed specialization in modern Frontend and the React/Next.js and TypeScript ecosystems. Development of personal projects aimed at establishing clean code practices and mastering modern state management concepts. Goal: Continuous growth through practical application.",
+      "Self-directed specialization in modern Frontend and the React/Next.js and TypeScript ecosystems. Goal: Continuous growth through practical application.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -116,13 +116,13 @@ export default function Experience() {
           >
             <div className="animate-inside">
               <div className="max-w-3xl mx-auto text-center bg-background p-6 rounded-xs shadow-lg">
-                <p className="w-fit mx-auto bg-foreground text-sm sm:text-lg text-background p-1 mb-4">
+                <p className="w-fit mx-auto bg-foreground text-sm sm:text-lg font-thin text-background p-2 mb-4">
                   {exp.period} | {exp.company}
                 </p>
-                <h3 className="w-fit mx-auto text-3xl sm:text-5xl pb-2 mb-4 border-b border-primary/50 font-semibold">
+                <h3 className="w-fit mx-auto text-3xl sm:text-4xl pb-2 mb-4 border-b border-primary/50 font-semibold">
                   {exp.title}
                 </h3>
-                <p className="text-left pl-2 sm:text-xl text-muted-foreground mb-6">
+                <p className="text-base pl-2 sm:text-xl text-muted-foreground mb-6">
                   {exp.description}
                 </p>
                 <div className="flex flex-wrap justify-center gap-2">
