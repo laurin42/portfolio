@@ -29,8 +29,10 @@ export default function HeroClient({
       <div className="hidden sm:block sm:relative sm:w-1/3 sm:h-full animate-fadeIn">
         <Image
           src="/images/hero/hero.webp"
-          alt="Hero"
+          alt="Image of Laurin Schmidt – Webdeveloper"
           fill
+          priority
+          sizes="(max-width: 640px) 256px, 33vw"
           className="object-cover absolute bottom-0 left-0"
         />
       </div>
@@ -38,8 +40,10 @@ export default function HeroClient({
         <div className="relative h-64 w-64 mx-auto sm:hidden mb-8">
           <Image
             src="/images/hero/hero.webp"
-            alt="Hero"
+            alt="Image of Laurin Schmidt – Webdeveloper"
+            priority
             fill
+            sizes="256px"
             className="object-cover rounded-full"
           />
         </div>
@@ -67,7 +71,7 @@ export default function HeroClient({
         >
           <div className="w-8 h-8 sm:w-14 sm:h-14">
             <Image
-              src={"/icons/devTools/GitHub.svg"}
+              src={"/icons/devTools/Github.svg"}
               alt="GitHub"
               height={100}
               width={100}

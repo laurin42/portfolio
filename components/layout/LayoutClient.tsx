@@ -36,7 +36,7 @@ export default function LayoutClient() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
     smoothScrollRef.current = ScrollSmoother.create({
-      smooth: 0.4,
+      smooth: 0.6,
       effects: false,
       smoothTouch: 0.1,
     });
