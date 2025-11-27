@@ -130,6 +130,10 @@ html {
   display: none;
 }
 
+.will-transform {
+  will-change: transform;
+}
+
 @layer base {
   * {
     @apply border-transparent outline-ring/50;

@@ -36,7 +36,7 @@ export default function Projects() {
   ];
 
   return (
-    <section className="min-h-screen my-16">
+    <section className="min-h-screen">
       {projects.map((project) => (
         <ProjectCard key={project.title} project={project} />
       ))}

@@ -22,28 +22,7 @@ type ProjectCardType = {
 };
 
 export default function ProjectCard({ project }: { project: ProjectCardType }) {
-  const [visible, setVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const element = cardRef.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          setVisible(entry.isIntersecting);
-        });
-      },
-      { threshold: 0.05, rootMargin: "0px 0px -200px 0px" }
-    );
-
-    observer.observe(element);
-
-    return () => {
-      observer.unobserve(element);
-    };
-  }, []);
 
   return (
     <div className="w-full min-h-svh sm:h-full flex flex-col justify-center items-center">
@@ -62,7 +41,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
         <CardHeader>
           <CardTitle
             className={`text-3xl sm:text-4xl transition-opacity duration-1200 w-fit mx-auto pb-2 mb-1 border-b border-foreground/32
-            ${visible ? "opacity-100" : "opacity-0"}`}
+          `}
           >
             {project.link && (
               <Link
@@ -75,8 +54,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
             )}
           </CardTitle>
           <CardDescription
-            className={`text-md sm:text-xl pb-4 sm:pb-0 max-w-xl drop-shadow-lg mx-auto transition-opacity duration-1400
-            ${visible ? "opacity-100" : "opacity-0"}
+            className={`text-md sm:text-xl pb-4 sm:pb-0 max-w-xl mx-auto transition-opacity duration-1400
               `}
           >
             {project.description}
@@ -84,9 +62,8 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
         </CardHeader>
 
         <CardContent
-          className={`px-0 flex justify-center items-end transition-opacity duration-1600 ${
-            visible ? "opacity-100" : "opacity-0"
-          }`}
+          className={`px-0 flex justify-center items-end transition-opacity duration-1600 
+          `}
         >
           {project.screenshots?.[0] && (
             <div className="relative w-3/3 sm:w-3/3 z-10">
@@ -96,7 +73,6 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
                 height={1000}
                 alt={`${project.title} laptop mockup`}
                 className="w-3/4 h-3/4"
-                loading="eager"
               />
             </div>
           )}
@@ -126,9 +102,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
         </CardContent>
 
         <CardFooter
-          className={`pt-4 flex flex-col justify-center transition-opacity duration-1800 ease-out ${
-            visible ? "opacity-100" : "opacity-0"
-          }`}
+          className={`pt-4 flex flex-col justify-center transition-opacity duration-1800 ease-out`}
         >
           {project.details && (
             <CardDescription className="text-balance text-lg">

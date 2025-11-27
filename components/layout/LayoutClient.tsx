@@ -34,8 +34,8 @@ export default function LayoutClient() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
     smoothScrollRef.current = ScrollSmoother.create({
-      smooth: 1,
-      effects: true,
+      smooth: 0.8,
+      effects: false,
       smoothTouch: 0.1,
     });
 
@@ -45,23 +45,20 @@ export default function LayoutClient() {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0, rootMargin: "-0% 0px -99% 0px" }
-    );
-
     sections.forEach((section) => {
-      const el = sectionRefs.current[section.id];
-      if (el) observer.observe(el);
-    });
+      const element = sectionRefs.current[section.id];
+      if (!element) return;
 
-    return () => observer.disconnect();
+      ScrollTrigger.create({
+        trigger: element,
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => setActiveSection(section.id),
+        onEnterBack: () => setActiveSection(section.id),
+      });
+    });
+    return () =>
+      ScrollTrigger.getAll().forEach((scrollTrigger) => scrollTrigger.kill());
   }, []);
 
   return (
