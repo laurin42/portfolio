@@ -20,7 +20,7 @@ export default function ExperienceBlock({
       className={`block will-transform w-svw h-svh flex items-center justify-center font-funnel ${background}`}
     >
       <div className="animate-inside">
-        <div className="max-w-3xl mx-auto text-center bg-background p-6 rounded-xs">
+        <div className="max-w-3xl h-2/3 mx-auto text-center bg-background p-6 rounded-xs">
           <p className="w-fit mx-auto bg-foreground text-sm sm:text-lg font-thin text-background p-2 mb-4">
             {experience.period} | {experience.company}
           </p>
@@ -32,7 +32,10 @@ export default function ExperienceBlock({
           </p>
           <div className="flex flex-wrap justify-center gap-2">
             {experience.tags.map((tag) => (
-              <span key={tag} className="px-3 py-1 text-xs border">
+              <span
+                key={tag}
+                className="px-3 py-1 text-xs border border-foreground/32"
+              >
                 {tag}
               </span>
             ))}

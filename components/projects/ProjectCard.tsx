@@ -25,7 +25,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="w-full min-h-svh sm:h-full flex flex-col justify-center items-center">
+    <div className="w-full min-h-svh sm:h-full will-transform flex flex-col justify-center items-center">
       <Card
         ref={cardRef}
         className={`relative
@@ -66,24 +66,25 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
           `}
         >
           {project.screenshots?.[0] && (
-            <div className="relative w-3/3 sm:w-3/3 z-10">
+            <div className="relative w-full max-w-3xl aspect-16/10">
               <Image
                 src={project.screenshots[0]}
-                width={1600}
-                height={1000}
-                alt={`${project.title} laptop mockup`}
-                className="w-3/4 h-3/4"
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 50vw, 90vw"
+                className="object-contain"
               />
             </div>
           )}
           {project.screenshots?.[1] && (
-            <div className="relative w-1/3 sm:w-1/4 -ml-59 z-20">
+            <div className="relative w-1/3 sm:w-1/4 aspect-9/19 -ml-20 z-20">
               <Image
                 src={project.screenshots[1]}
-                width={800}
-                height={1600}
                 alt={`${project.title} mobile mockup`}
-                className="w-3/4 h-3/4"
+                fill
+                sizes="(min-width: 1024px) 25vw, 40vw"
+                className="object-contain"
+                loading="lazy"
               />
             </div>
           )}

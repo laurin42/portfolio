@@ -36,7 +36,7 @@ export default function LayoutClient() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
     smoothScrollRef.current = ScrollSmoother.create({
-      smooth: 0.8,
+      smooth: 0.4,
       effects: false,
       smoothTouch: 0.1,
     });
@@ -66,8 +66,6 @@ export default function LayoutClient() {
     return () => observer.disconnect();
   }, []);
 
-  console.log(activeSection);
-
   return (
     <>
       <Header isMenuVisible={animationDone} />
@@ -76,9 +74,14 @@ export default function LayoutClient() {
           {sections.map((section) => (
             <span
               key={section.id}
-              className={`absolute transform text-shadow-xs text-shadow-background/32 transition-opacity duration-500 text-3xl sm:text-5xl tracking-wider font-funnel font-semibold ${
-                activeSection === section.id ? "opacity-100" : "opacity-0"
-              }`}
+              className={`absolute transform transition-opacity duration-500 text-3xl sm:text-5xl tracking-wider font-funnel font-semibold
+          ${
+            section.id === "home" && activeSection === "home"
+              ? "text-white"
+              : "text-foreground"
+          }
+          text-shadow-xs text-shadow-background/32
+          ${activeSection === section.id ? "opacity-100" : "opacity-0"}`}
             >
               {section.label}
             </span>
