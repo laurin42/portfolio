@@ -19,10 +19,7 @@ function AccordionItem({
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn(
-        "w-full border border-foreground/32 rounded-xs my-2",
-        className
-      )}
+      className={cn("w-full border border-dark/32 rounded-xs my-2", className)}
       {...props}
     />
   );

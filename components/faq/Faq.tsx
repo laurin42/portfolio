@@ -8,16 +8,16 @@ import { faqData } from "@/lib/data/faq";
 
 export default function Faq() {
   return (
-    <section className="min-h-svh w-full flex flex-col justify-center items-center font-funnel">
-      <h2 className="text-3xl sm:text-4xl border-b border-foreground pb-2 mb-2 px-4 text-center mx-16 sm:mx-0">
+    <section className="min-h-svh w-full flex flex-col justify-center items-center font-funnel bg-muted-foreground">
+      <h2 className="text-3xl text-dark sm:text-4xl border-b border-dark/32 pb-2 mb-2 px-4 text-center mx-16 sm:mx-0">
         Frequently Asked Questions
       </h2>
-      <p className="sm:text-lg text-muted-foreground px-4 text-center">
+      <p className="sm:text-lg text-dark/64 px-4 text-center">
         Everything you need to know about Laurin Schmidt, Webdeveloper from
         Düsseldorf
       </p>
       <Accordion
-        className="p-8 text-foreground max-w-3xl flex flex-col justify-center items-center"
+        className=" text-dark p-8 max-w-3xl flex flex-col justify-center items-center"
         type="single"
         collapsible
       >

@@ -16,37 +16,40 @@ export default function MyNavigationMenuMobile() {
   ];
 
   return (
-    <div className="">
+    <div>
       <nav className="flex justify-end pr-4">
-        <button onClick={() => setIsOpen(true)} aria-label="Open menu">
+        <button
+          onClick={() => setIsOpen(true)}
+          aria-label="Open menu"
+          className="cursor-pointer"
+        >
           <Menu className="w-12 h-12" />
         </button>
       </nav>
-
+      {isOpen && (
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 bg-black/50 backdrop-blur-xs z-40"
+        />
+      )}
       <div
-        className={`
-          fixed top-0 left-0 w-full h-screen bg-background p-4 z-10 flex flex-col
-          transition-all duration-300 ease-in-out
-          ${
-            isOpen
-              ? "opacity-100 translate-y-0 pointer-events-auto"
-              : "opacity-0 -translate-y-5 pointer-events-none"
-          }
-        `}
+        className={`fixed top-0 right-0 h-screen w-full sm:w-2/3 bg-muted-foreground z-50 transform transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        } flex flex-col p-8`}
       >
         <button
           onClick={() => setIsOpen(false)}
-          className="self-end mb-4"
+          className="self-end mb-4 curspor-pointer text-background cursor-pointer"
           aria-label="Close menu"
         >
           <Close className="w-12 h-12" />
         </button>
 
-        <ul className="h-svh flex flex-col items-center justify-center pb-16 text-2xl">
+        <ul className="h-full flex flex-col items-center justify-start sm:justify-center text-4xl text-background sm:text-7xl space-y-2">
           {menuItems.map((item) => (
             <li
               key={item.href}
-              className="flex justify-center border-t last:border-b border-dashed w-full py-12"
+              className="flex justify-center w-full py-4 hover:text-accent-foreground/64 transition-colors duration-300 ease-in-out"
             >
               <a href={item.href}>{item.label}</a>
             </li>

@@ -38,7 +38,7 @@
       title: "Backend",
       text: "Building scalable Node.js & database solutions",
       icons: BackendIcons,
-      bgColor: "bg-background",
+      bgColor: "bg-light",
     },
     {
       title: "Development Tools",
