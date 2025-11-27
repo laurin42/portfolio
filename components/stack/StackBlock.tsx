@@ -13,23 +13,23 @@ export default function StackBlock({
   title,
   text,
   icons,
-  bgColor = "bg-muted-foreground",
+  bgColor,
 }: StackBlockProps) {
   return (
     <div
-      className={`h-screen flex flex-col items-center justify-center text-white font-funnel ${bgColor}`}
+      className={`h-screen px-8 flex flex-col items-center justify-center text-white font-funnel ${bgColor}`}
     >
-      <h2 className="text-4xl sm:text-7xl tracking-wide font-funnel bg-black p-2">
+      <h2 className="text-3xl sm:text-7xl text-center flex-nowrap tracking-wide font-funnel bg-black p-1 sm:p-2">
         {title}
       </h2>
-      <p className="font-thin text-3xl pt-4 pb-1 mb-8 border-b border-black/32 text-black">
+      <p className="font-thin text-2xl sm:pt-4 pb-1 mb-8 border-b border-black/32 text-black text-center">
         {text}
       </p>
-      <div className="flex gap-8">
+      <div className="flex flex-wrap justify-center items-center gap-8">
         {icons.map((icon) => (
           <div
             key={icon.alt}
-            className="w-8 h-8 sm:w-14 sm:h-14 transition-transform duration-300 hover:scale-105"
+            className="shrink-0 w-1/7 h-9 sm:w-14 sm:h-14 transition-transform duration-300 hover:scale-105"
             title={icon.alt}
           >
             <Image
