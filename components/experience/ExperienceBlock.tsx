@@ -17,17 +17,17 @@ export default function ExperienceBlock({
 }: ExperienceBlockProps) {
   return (
     <div
-      className={`block will-transform w-svw h-svh flex items-center justify-center font-funnel ${background}`}
+      className={`block w-full will-transform flex justify-center font-funnel ${background}`}
     >
-      <div className="animate-inside">
-        <div className="max-w-3xl h-2/3 mx-auto text-center bg-background p-6 rounded-xs">
+      <div className="animate-inside sm:flex sm:flex-col justify-center items-center">
+        <div className="w-full sm:max-w-3xl h-svh sm:h-2/3 mt-16 sm:mt-32 mx-auto text-center bg-background p-6 rounded-xs flex flex-col pt-16 px-16 sm:px-8">
           <p className="w-fit mx-auto bg-foreground text-sm sm:text-lg font-thin text-background p-2 mb-4">
             {experience.period} | {experience.company}
           </p>
           <h3 className="w-fit mx-auto text-3xl sm:text-4xl pb-2 mb-4 border-b border-primary/50 font-semibold">
             {experience.title}
           </h3>
-          <p className="text-base pl-2 sm:text-xl text-muted-foreground mb-6">
+          <p className="text-base pl-2 sm:text-xl text-muted-foreground mb-6 sm:mb-8">
             {experience.description}
           </p>
           <div className="flex flex-wrap justify-center gap-2">

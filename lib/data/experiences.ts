@@ -1,10 +1,10 @@
 export const experiences = [
   {
-    title: "Internship & Foundational Technical Skills",
+    title: "Take The Bull By The Horns",
     period: "May 2024",
     company: "StartUp Werk | Oberhausen",
     description:
-      "Entry into software development by contributing to smaller internal projects. Focus on code structuring and acquiring fundamental programming concepts, as well as proficiency in version control (Git).",
+      "Entry into software development as an intern by contributing to smaller internal projects. Focus on code structuring and acquiring fundamental programming concepts, as well as proficiency in version control (Git).",
     tags: ["HTML", "CSS", "JavaScript", "Git"],
   },
   {
@@ -28,7 +28,7 @@ export const experiences = [
     period: "March 2025 – Present",
     company: "Independent Projects",
     description:
-      "Self-directed specialization in modern Frontend and the React/Next.js and TypeScript ecosystems. Goal: Continuous growth through practical application.",
+  "Specialization in modern frontend development with React, Next.js, and TypeScript. Continuous growth achieved through practical application and real-world projects. Focused on building user-friendly and performant web applications.",
     tags: [
       "Next.js",
       "TypeScript",
