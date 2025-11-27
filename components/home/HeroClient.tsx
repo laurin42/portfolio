@@ -23,9 +23,10 @@ export default function HeroClient({
       flex flex-row
       font-funnel
       animate-fadeIn
+      relative
     "
     >
-      <div className="relative w-1/3 h-full animate-fadeIn">
+      <div className="hidden sm:block sm:relative sm:w-1/3 sm:h-full animate-fadeIn">
         <Image
           src="/images/hero/hero.webp"
           alt="Hero"
@@ -33,8 +34,16 @@ export default function HeroClient({
           className="object-cover absolute bottom-0 left-0"
         />
       </div>
-      <div className="w-2/3 flex flex-col justify-center">
-        <h1 className="text-2xl sm:text-2xl md:text-6xl lg:text-8xl text-center aninmate-fadeIn">
+      <div className="w-full sm:w-2/3 flex flex-col justify-center">
+        <div className="relative h-64 w-64 mx-auto sm:hidden mb-8">
+          <Image
+            src="/images/hero/hero.webp"
+            alt="Hero"
+            fill
+            className="object-cover rounded-full"
+          />
+        </div>
+        <h1 className="text-3xl sm:text-3xl md:text-6xl lg:text-8xl text-center aninmate-fadeIn">
           Hello<span className="text-accent">, </span>I am Laurin
           <span className="text-accent">.</span>
         </h1>
@@ -51,7 +60,7 @@ export default function HeroClient({
           based in Düsseldorf, Germany
         </p>
         <div
-          className={`flex justify-center items-center gap-8 pt-8 
+          className={`flex justify-center items-center gap-4 sm:gap-8 pt-6 sm:pt-8 
         transition-opacity duration-300
         ${animationDone ? "opacity-100" : "opacity-0"}
           `}

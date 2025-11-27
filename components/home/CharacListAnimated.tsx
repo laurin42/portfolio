@@ -45,14 +45,14 @@ export default function CharacListAnimated({
   return (
     <h2
       role="text"
-      className="inline-block h-10 sm:h-36px overflow-hidden align-bottom"
+      className="inline-block h-4 sm:h-10 overflow-hidden align-bottom"
     >
       {characteristics.map((charac, id) =>
         id === activeIndex ? (
           <div
             key={id}
             className="
-              h-10 sm:h-35px w-full flex items-center justify-center
+              h-4 sm:h-10 w-full flex items-center justify-center
               text-accent text-md sm:text-xl md:text-2xl lg:text-4xl
               animate-fadeInRight
             "

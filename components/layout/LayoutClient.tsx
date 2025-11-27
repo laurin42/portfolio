@@ -77,7 +77,7 @@ export default function LayoutClient() {
               className={`absolute transform transition-opacity duration-500 text-3xl sm:text-5xl tracking-wider font-funnel font-semibold
           ${
             section.id === "home" && activeSection === "home"
-              ? "text-white"
+              ? "text-foreground sm:text-white"
               : "text-foreground"
           }
           text-shadow-xs text-shadow-background/32
