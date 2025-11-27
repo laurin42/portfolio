@@ -1,0 +1,33 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { faqData } from "@/lib/data/faq";
+
+export default function Faq() {
+  return (
+    <section className="min-h-svh w-full flex flex-col justify-center items-center font-funnel">
+      <h2 className="text-3xl sm:text-4xl border-b border-foreground pb-2 mb-2">
+        Frequently Asked Questions
+      </h2>
+      <p className="sm:text-lg text-muted-foreground">
+        Everything you need to know about Laurin Schmidt, Webdeveloper from
+        Düsseldorf
+      </p>
+      <Accordion
+        className="p-8 text-foreground w-3xl flex flex-col justify-center items-center"
+        type="single"
+        collapsible
+      >
+        {faqData.map((item, index) => (
+          <AccordionItem key={index} value={`item-${index}`}>
+            <AccordionTrigger>{item.question}</AccordionTrigger>
+            <AccordionContent>{item.answer}</AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </section>
+  );
+}

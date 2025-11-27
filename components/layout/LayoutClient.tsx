@@ -11,6 +11,7 @@ import Footer from "../navigation/Footer";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Faq from "../faq/Faq";
 
 const sections = [
   { id: "home", label: "Home" },
@@ -18,6 +19,7 @@ const sections = [
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
   { id: "contact", label: "Contact" },
+  { id: "faq", label: "FAQ" },
 ];
 
 export default function LayoutClient() {
@@ -45,85 +47,100 @@ export default function LayoutClient() {
   }, []);
 
   useEffect(() => {
-    sections.forEach((section) => {
-      const element = sectionRefs.current[section.id];
-      if (!element) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0, rootMargin: "-0% 0px -99% 0px" }
+    );
 
-      ScrollTrigger.create({
-        trigger: element,
-        start: "top center",
-        end: "bottom center",
-        onEnter: () => setActiveSection(section.id),
-        onEnterBack: () => setActiveSection(section.id),
-      });
+    sections.forEach((section) => {
+      const el = sectionRefs.current[section.id];
+      if (el) observer.observe(el);
     });
-    return () =>
-      ScrollTrigger.getAll().forEach((scrollTrigger) => scrollTrigger.kill());
+
+    return () => observer.disconnect();
   }, []);
 
+  console.log(activeSection);
+
   return (
-    <div id="smooth-wrapper">
-      <div id="smooth-content">
-        {animationDone && (
-          <div className="fixed top-4 left-8 -translate-y-1/2 z-50 animate-fadeIn">
-            {sections.map((section) => (
-              <span
-                key={section.id}
-                className={`absolute transform text-shadow-xs text-shadow-background/32 transition-opacity duration-500 text-3xl sm:text-5xl tracking-wider font-funnel font-semibold ${
-                  activeSection === section.id ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {section.label}
-              </span>
-            ))}
+    <>
+      <Header isMenuVisible={animationDone} />
+      {animationDone && (
+        <div className="fixed top-4 left-8 -translate-y-1/2 z-50 animate-fadeIn">
+          {sections.map((section) => (
+            <span
+              key={section.id}
+              className={`absolute transform text-shadow-xs text-shadow-background/32 transition-opacity duration-500 text-3xl sm:text-5xl tracking-wider font-funnel font-semibold ${
+                activeSection === section.id ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {section.label}
+            </span>
+          ))}
+        </div>
+      )}
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
+          <div
+            id="home"
+            ref={(el) => {
+              sectionRefs.current["home"] = el;
+            }}
+          >
+            <HeroClient onAnimationComplete={handleAnimationComplete} />
           </div>
-        )}
 
-        <div
-          id="home"
-          ref={(el) => {
-            sectionRefs.current["home"] = el;
-          }}
-        >
-          <Header isMenuVisible={animationDone} />
-          <HeroClient onAnimationComplete={handleAnimationComplete} />
+          <Stack
+            id="stack"
+            ref={(el) => {
+              sectionRefs.current["stack"] = el;
+            }}
+          />
+
+          <div
+            id="projects"
+            ref={(el) => {
+              sectionRefs.current["projects"] = el;
+            }}
+          >
+            <Projects />
+          </div>
+          <div
+            id="experience"
+            ref={(el) => {
+              sectionRefs.current["experience"] = el;
+            }}
+          >
+            <Experience />
+          </div>
+
+          <div
+            id="contact"
+            ref={(el) => {
+              sectionRefs.current["contact"] = el;
+            }}
+          >
+            <Contact />
+          </div>
+
+          <div
+            id="faq"
+            ref={(el) => {
+              sectionRefs.current["faq"] = el;
+            }}
+          >
+            <Faq />
+          </div>
+
+          <Footer />
         </div>
-
-        <Stack
-          id="stack"
-          ref={(el) => {
-            sectionRefs.current["stack"] = el;
-          }}
-        />
-
-        <div
-          id="projects"
-          ref={(el) => {
-            sectionRefs.current["projects"] = el;
-          }}
-        >
-          <Projects />
-        </div>
-        <div
-          id="experience"
-          ref={(el) => {
-            sectionRefs.current["experience"] = el;
-          }}
-        >
-          <Experience />
-        </div>
-
-        <div
-          id="contact"
-          ref={(el) => {
-            sectionRefs.current["contact"] = el;
-          }}
-        >
-          <Contact />
-        </div>
-
-        <Footer />
       </div>
-    </div>
+    </>
   );
 }
