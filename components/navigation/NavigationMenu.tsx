@@ -16,7 +16,7 @@ export default function NavigationMenu() {
 
   return (
     <div>
-      <nav className="flex justify-end pr-4">
+      <nav className="flex justify-end pr-4 text-foreground">
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Open menu"
@@ -38,13 +38,13 @@ export default function NavigationMenu() {
       >
         <button
           onClick={() => setIsOpen(false)}
-          className="self-end mb-4 curspor-pointer text-background cursor-pointer"
+          className="self-end mb-4 curspor-pointer cursor-pointer"
           aria-label="Close menu"
         >
           <Close className="w-12 h-12" />
         </button>
 
-        <ul className="h-full flex flex-col items-center justify-start sm:justify-center text-4xl text-background sm:text-7xl space-y-2">
+        <ul className="h-full flex flex-col items-center justify-start sm:justify-center text-4xl sm:text-7xl space-y-2">
           {menuItems.map((item) => (
             <li
               key={item.href}

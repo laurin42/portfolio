@@ -35,17 +35,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${funnelDisplay.variable} antialiased`}
       >
-        <LayoutClient>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-        </LayoutClient>
+          <LayoutClient>{children}</LayoutClient>
+        </ThemeProvider>
       </body>
     </html>
   );
