@@ -17,7 +17,7 @@ export const faqData: FAQItem[] = [
   {
     question: "Where is Laurin Schmidt located?",
     answer:
-      "Laurin Schmidt is based in Düsseldorf, Germany, and is open to both regional opportunities in NRW and remote work across Europe.",
+      "Laurin Schmidt is based in Düsseldorf, Germany, and is open to both regional opportunities in NRW and remote work all across Europe.",
   },
     {
     question: "What projects has Laurin Schmidt worked on?",
