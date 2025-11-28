@@ -38,7 +38,7 @@ export default function Contact() {
           <Link href="https://github.com/laurin42" target="blank">
             <div className="h-16 w-16">
               <Image
-                src={"/icons/devTools/github.svg"}
+                src={"/icons/devTools/GitHub.svg"}
                 alt="GitHub"
                 height={100}
                 width={100}

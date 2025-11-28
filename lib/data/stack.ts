@@ -5,24 +5,24 @@
   
   export const FrontendIcons: Icon[] = [
     { src: "/icons/frontendIcons/next.svg", alt: "Next.js" },
-    { src: "/icons/frontendIcons/react.svg", alt: "React" },
-    { src: "/icons/frontendIcons/django.svg", alt: "Django" },
+    { src: "/icons/frontendIcons/React.svg", alt: "React" },
+    { src: "/icons/frontendIcons/Django.svg", alt: "Django" },
     { src: "/icons/frontendIcons/typescript.svg", alt: "TypeScript" },
-    { src: "/icons/frontendIcons/javascript.svg", alt: "JavaScript" },
+    { src: "/icons/frontendIcons/JavaScript.svg", alt: "JavaScript" },
     { src: "/icons/frontendIcons/html.svg", alt: "HTML" },
-    { src: "/icons/frontendIcons/css.svg", alt: "CSS" },
+    { src: "/icons/frontendIcons/Css.svg", alt: "CSS" },
   ];
 
   export const BackendIcons: Icon[] = [
     { src: "/icons/backendIcons/node.js.svg", alt: "Node.js" },
     { src: "/icons/backendIcons/express.svg", alt: "Express" },
-    { src: "/icons/backendIcons/postgressql.svg", alt: "PostgresSQL" },
+    { src: "/icons/backendIcons/postgresSQL.svg", alt: "PostgresSQL" },
     { src: "/icons/backendIcons/drizzle.svg", alt: "Drizzle ORM" },
   ];
 
   export const DevToolsIcons: Icon[] = [
     { src: "/icons/devTools/git.svg", alt: "Git" },
-    { src: "/icons/devTools/github.svg", alt: "GitHub" },
+    { src: "/icons/devTools/GitHub.svg", alt: "GitHub" },
     { src: "/icons/devTools/docker.svg", alt: "Docker" },
     { src: "/icons/devTools/coolify.svg", alt: "Coolify" },
   ];
