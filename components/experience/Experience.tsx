@@ -57,9 +57,12 @@ export default function Experience() {
   }, []);
 
   return (
-    <section ref={wrapRef} className="w-full h-svh overflow-hidden">
+    <section
+      ref={wrapRef}
+      className="hidden sm:block w-full h-svh overflow-hidden"
+    >
       <div
-        className="h-svh flex"
+        className="flex h-svh"
         style={{ width: `${experiences.length * 100}svw` }}
       >
         {experiences.map((exp, i) => (

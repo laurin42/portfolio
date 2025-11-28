@@ -23,7 +23,7 @@ export default function StackBlock({
       <motion.h2
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
-        transition={{ duration: 0.2, ease: "easeIn" }}
+        transition={{ duration: 0.1, ease: "easeIn" }}
         style={{ transformOrigin: "bottom" }}
         className="text-3xl sm:text-7xl text-center w-fit mx-auto flex-nowrap tracking-wide font-funnel bg-black p-1 sm:pb-2"
       >
@@ -44,7 +44,7 @@ export default function StackBlock({
             key={icon.alt}
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
-            transition={{ duration: 0.1 }}
+            transition={{ duration: 0.1, ease: "easeInOut" }}
             style={{ transformOrigin: "bottom" }}
             className="shrink-0 w-1/7 h-9 sm:w-14 sm:h-14 transition-transform duration-300 hover:scale-105"
             title={icon.alt}

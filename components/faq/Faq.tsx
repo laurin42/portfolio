@@ -17,7 +17,7 @@ export default function Faq() {
         Düsseldorf
       </p>
       <Accordion
-        className=" text-dark max-w-3xl flex flex-col justify-center items-center pt-4"
+        className=" text-dark w-full sm:max-w-3xl flex flex-col justify-center items-center px-4 sm:px-0 pt-4"
         type="single"
         collapsible
       >

@@ -26,7 +26,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="w-full min-h-svh sm:h-full will-transform flex flex-col justify-center items-center">
+    <div className="w-full min-h-svh will-transform flex justify-center items-center">
       <Card
         ref={cardRef}
         className={`relative
@@ -48,6 +48,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 100 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
               >
                 <Link
@@ -77,6 +78,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.2 }}
               className="relative w-full max-w-3xl aspect-16/10"
             >
@@ -93,6 +95,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.2 }}
               className="relative w-1/3 sm:w-1/4 aspect-9/19 -ml-20 z-20"
             >
@@ -127,7 +130,8 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 100 }}
-              transition={{ duration: 0.4, delay: 0.8, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.4, ease: "easeInOut" }}
             >
               <CardDescription className="text-balance text-lg">
                 {project.details}
@@ -138,7 +142,8 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 100 }}
-              transition={{ duration: 0.4, delay: 0.8, ease: "easeInOut" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.4, ease: "easeInOut" }}
             >
               <Link
                 href={project.link}
@@ -153,6 +158,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 100 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.8, ease: "easeInOut" }}
             >
               <Link

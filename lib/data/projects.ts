@@ -27,7 +27,7 @@ export const projects = [
       title: "Code Playground - My GitHub Profile",
       description: "Build, Break, Learn",
       link: "https://github.com/laurin42",
-      details: "Building projects in React & React Native – weather apps, tarot apps, and experiments to learn, play, and grow."
+      details: ["Building projects in React & React Native – weather apps, tarot apps, and experiments to learn, play, and grow."]
 
     },
   ];

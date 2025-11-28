@@ -180,6 +180,20 @@ html {
     }
   }
 
+  @keyframes scaleY {
+    0% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+
+  .animate-scaleY {
+    animation: scaleY 0.5s ease-out forwards;
+    transform-origin: bottom;
+  }
+
   .animate-fadeIn {
     animation: fadeIn 0.4s ease-out forwards;
   }

@@ -45,3 +45,9 @@ export const backgrounds = [
   "bg-gradient-to-r from-emerald-500 from-10% via-lime-500 via-30% to-yellow-500 to-90%",
   "bg-gradient-to-r from-yellow-500 from-10% via-amber-500 via-30% to-orange-500 to-90%",
 ];
+
+export const backgroundsMobile = [
+  "bg-gradient-to-b from-transparent from-0% from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%",
+  "bg-gradient-to-b from-emerald-500 from-10% via-lime-500 via-30% to-yellow-500 to-90%",
+  "bg-gradient-to-b from-yellow-500 from-10% via-amber-500 via-30% to-orange-500 to-90% to-transparent to-100%",
+];

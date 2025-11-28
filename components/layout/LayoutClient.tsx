@@ -12,6 +12,7 @@ import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Faq from "../faq/Faq";
+import ExperienceMobile from "../experience/ExperienceMobile";
 
 const sections = [
   { id: "home", label: "Home" },
@@ -38,7 +39,6 @@ export default function LayoutClient() {
     smoothScrollRef.current = ScrollSmoother.create({
       smooth: 0.6,
       effects: false,
-      smoothTouch: 0.1,
     });
 
     return () => {
@@ -126,6 +126,7 @@ export default function LayoutClient() {
             }}
           >
             <Experience />
+            <ExperienceMobile />
           </div>
 
           <div
