@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import CharacListAnimated from "./CharacListAnimated";
 import { motion } from "motion/react";
@@ -72,7 +73,7 @@ export default function HeroClient({
 
         <p
           className={`
-        text-center text-sm sm:text-md md:text-xl lg:text-2xl
+        text-center text-lg sm:text-lg md:text-xl lg:text-2xl
         transition-opacity duration-300
         ${animationDone ? "opacity-100" : "opacity-0"}
       `}
@@ -86,22 +87,29 @@ export default function HeroClient({
           `}
         >
           <div className="w-8 h-8 sm:w-14 sm:h-14">
-            <Image
-              src={"/icons/devTools/Github.svg"}
-              alt="GitHub"
-              height={100}
-              width={100}
-              className="dark:invert transition-transform duration-300 hover:scale-104 cursor-pointer"
-            />
+            <Link href="https://github.com/laurin42" target="blank">
+              <Image
+                src={"/icons/devTools/Github.svg"}
+                alt="GitHub"
+                height={100}
+                width={100}
+                className="dark:invert transition-transform duration-300 hover:scale-104 cursor-pointer"
+              />
+            </Link>
           </div>
           <div className="w-8 h-8 sm:w-14 sm:h-14">
-            <Image
-              src={"/icons/LinkedIn.svg"}
-              alt="GitHub"
-              height={100}
-              width={100}
-              className="transition-transform duration-300 hover:scale-104 cursor-pointer"
-            />
+            <Link
+              href="https://www.linkedin.com/in/laurin-schmidt-650008330/"
+              target="blank"
+            >
+              <Image
+                src={"/icons/LinkedIn.svg"}
+                alt="GitHub"
+                height={100}
+                width={100}
+                className="transition-transform duration-300 hover:scale-104 cursor-pointer"
+              />
+            </Link>
           </div>
         </div>
       </div>
