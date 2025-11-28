@@ -150,13 +150,19 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
             </motion.div>
           )}
           {project.link && !project.screenshots && (
-            <Link
-              href={project.link}
-              target="_blank"
-              className="-mt-4 hover:text-accent transition-opacity duration-2200 underline"
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 100 }}
+              transition={{ duration: 0.4, delay: 0.8, ease: "easeInOut" }}
             >
-              Visit Profile
-            </Link>
+              <Link
+                href={project.link}
+                target="_blank"
+                className="hover:text-accent transition-opacity duration-2200 underline"
+              >
+                Visit Profile
+              </Link>
+            </motion.div>
           )}
         </CardFooter>
       </Card>
