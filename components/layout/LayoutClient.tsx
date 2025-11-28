@@ -80,6 +80,11 @@ export default function LayoutClient() {
               ? "text-foreground sm:text-white"
               : "text-foreground"
           }
+                 ${
+                   section.id === "stack" && activeSection === "stack"
+                     ? "text-foreground sm:text-black"
+                     : "text-foreground"
+                 }
           text-shadow-xs text-shadow-background/32
           ${activeSection === section.id ? "opacity-100" : "opacity-0"}`}
             >

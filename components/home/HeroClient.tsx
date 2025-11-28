@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import Image from "next/image";
 import CharacListAnimated from "./CharacListAnimated";
+import { motion } from "motion/react";
 
 export default function HeroClient({
   onAnimationComplete,
@@ -26,7 +27,12 @@ export default function HeroClient({
       relative
     "
     >
-      <div className="hidden sm:block sm:relative sm:w-1/3 sm:h-full animate-fadeIn">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 100 }}
+        transition={{ duration: 0.2, ease: "easeIn" }}
+        className="hidden sm:block sm:relative sm:w-1/3 sm:h-full"
+      >
         <Image
           src="/images/hero/hero.webp"
           alt="Image of Laurin Schmidt – Webdeveloper"
@@ -35,9 +41,13 @@ export default function HeroClient({
           sizes="(max-width: 640px) 256px, 33vw"
           className="object-cover absolute bottom-0 left-0"
         />
-      </div>
+      </motion.div>
       <div className="w-full sm:w-2/3 flex flex-col justify-center">
-        <div className="relative h-64 w-64 mx-auto sm:hidden mb-8">
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          className="relative h-64 w-64 mx-auto sm:hidden mb-8"
+        >
           <Image
             src="/images/hero/hero.webp"
             alt="Image of Laurin Schmidt – Webdeveloper"
@@ -46,11 +56,17 @@ export default function HeroClient({
             sizes="256px"
             className="object-cover rounded-full"
           />
-        </div>
-        <h1 className="text-3xl sm:text-3xl md:text-6xl lg:text-8xl text-center aninmate-fadeIn">
+        </motion.div>
+        <motion.h1
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+          transition={{ duration: 0.2, ease: "easeIn" }}
+          style={{ transformOrigin: "bottom" }}
+          className="text-3xl sm:text-3xl md:text-6xl lg:text-8xl text-center aninmate-fadeIn"
+        >
           Hello<span className="text-accent">, </span>I am Laurin
           <span className="text-accent">.</span>
-        </h1>
+        </motion.h1>
 
         <CharacListAnimated onAnimationComplete={handleAnimationComplete} />
 

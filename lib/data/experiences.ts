@@ -1,6 +1,6 @@
 export const experiences = [
   {
-    title: "Take The Bull By The Horns",
+    title: "Into The Fire",
     period: "May 2024",
     company: "StartUp Werk | Oberhausen",
     description:
@@ -8,7 +8,7 @@ export const experiences = [
     tags: ["HTML", "CSS", "JavaScript", "Git"],
   },
   {
-    title: "Intensive Full-Stack Training",
+    title: "Take The Bull By The Horns",
     period: "July 2024 – March 2025",
     company: "8-Month Bootcamp/Course",
     description:
@@ -24,7 +24,7 @@ export const experiences = [
     ],
   },
   {
-    title: "Self-Study & Specialization",
+    title: "Making It Count",
     period: "March 2025 – Present",
     company: "Independent Projects",
     description:

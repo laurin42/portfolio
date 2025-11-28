@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Icon } from "@/lib/data/stack";
+import { motion } from "motion/react";
 
 interface StackBlockProps {
   title: string;
@@ -19,16 +20,32 @@ export default function StackBlock({
     <div
       className={`h-screen px-8 flex flex-col items-center justify-center text-white font-funnel ${bgColor}`}
     >
-      <h2 className="text-3xl sm:text-7xl text-center flex-nowrap tracking-wide font-funnel bg-black p-1 sm:p-2">
+      <motion.h2
+        initial={{ scaleY: 0 }}
+        whileInView={{ scaleY: 1 }}
+        transition={{ duration: 0.2, ease: "easeIn" }}
+        style={{ transformOrigin: "bottom" }}
+        className="text-3xl sm:text-7xl text-center w-fit mx-auto flex-nowrap tracking-wide font-funnel bg-black p-1 sm:pb-2"
+      >
         {title}
-      </h2>
-      <p className="font-thin text-2xl sm:pt-4 pb-1 mb-8 border-b border-black/32 text-black text-center">
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 100 }}
+        transition={{ duration: 0.8, ease: "easeIn" }}
+        className="font-thin text-2xl sm:pt-4 pb-1 mb-8 border-b border-black/32 text-black text-center"
+      >
         {text}
-      </p>
+      </motion.p>
       <div className="flex flex-wrap justify-center items-center gap-8">
         {icons.map((icon) => (
-          <div
+          <motion.div
             key={icon.alt}
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            transition={{ duration: 0.1 }}
+            style={{ transformOrigin: "bottom" }}
             className="shrink-0 w-1/7 h-9 sm:w-14 sm:h-14 transition-transform duration-300 hover:scale-105"
             title={icon.alt}
           >
@@ -39,7 +56,7 @@ export default function StackBlock({
               height={100}
               style={{ width: "100%", height: "100%" }}
             />
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
