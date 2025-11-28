@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import MyNavigationMenuMobile from "./NavigationMenuMobile";
+import NavigationMenu from "./NavigationMenu";
 import { ThemeToggle } from "./ThemeToggle";
 
 export default function Header({ isMenuVisible }: { isMenuVisible: boolean }) {
@@ -22,7 +22,7 @@ export default function Header({ isMenuVisible }: { isMenuVisible: boolean }) {
     >
       <div className="w-full flex justify-end">
         <ThemeToggle />
-        <MyNavigationMenuMobile />
+        <NavigationMenu />
       </div>
     </header>
   );

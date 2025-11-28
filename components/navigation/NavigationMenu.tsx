@@ -2,9 +2,8 @@
 
 import { IoMenu as Menu, IoClose as Close } from "react-icons/io5";
 import { useState } from "react";
-import { ThemeToggle } from "./ThemeToggle";
 
-export default function MyNavigationMenuMobile() {
+export default function NavigationMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
@@ -51,7 +50,9 @@ export default function MyNavigationMenuMobile() {
               key={item.href}
               className="flex justify-center w-full py-4 hover:text-accent-foreground/64 transition-colors duration-300 ease-in-out"
             >
-              <a href={item.href}>{item.label}</a>
+              <a href={item.href} onClick={() => setIsOpen(false)}>
+                {item.label}
+              </a>
             </li>
           ))}
         </ul>
