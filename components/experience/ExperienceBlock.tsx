@@ -19,15 +19,15 @@ export default function ExperienceBlock({
     <div
       className={`block w-full  will-transform flex justify-center font-funnel ${background}`}
     >
-      <div className="animate-inside sm:flex sm:flex-col justify-center items-center">
-        <div className="w-full sm:max-w-3xl h-39/40 sm:h-2/3 mx-auto text-center bg-background p-6 rounded-xs flex flex-col pt-32 sm:pt-16 px-16 sm:px-8">
-          <p className="w-fit mx-auto bg-foreground text-sm sm:text-lg font-thin text-background p-2 mb-4">
+      <div className="animate-inside flex flex-col justify-center items-center">
+        <div className="w-full sm:max-w-3xl sm:h-2/3 mx-auto text-center bg-background p-4 rounded-xs flex flex-col justify-center items-center gap-y-4">
+          <p className="w-fit mx-auto bg-foreground text-sm sm:text-lg font-thin text-background p-1">
             {experience.period} | {experience.company}
           </p>
-          <h3 className="w-fit mx-auto text-3xl sm:text-4xl pb-2 mb-4 border-b border-primary/50 font-semibold">
+          <h3 className="w-fit mx-auto text-3xl sm:text-4xl border-b border-primary/50 font-semibold">
             {experience.title}
           </h3>
-          <p className="text-base pl-2 sm:text-xl text-muted-foreground mb-6 sm:mb-8">
+          <p className="text-xl text-muted-foreground">
             {experience.description}
           </p>
           <div className="flex flex-wrap justify-center gap-2">
