@@ -14,18 +14,25 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Faq from "../faq/Faq";
 import ExperienceMobile from "../experience/ExperienceMobile";
 import useIsMobile from "@/hooks/useIsMobile";
+import { usePathname } from "next/navigation";
 
 const sections = [
   { id: "home", label: "Home" },
   { id: "stack", label: "Stack" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
-  { id: "experienceMobile", label: "Experience" },
   { id: "contact", label: "Contact" },
   { id: "faq", label: "FAQ" },
 ];
 
-export default function LayoutClient() {
+export default function LayoutClient({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  const isLandingPage = pathname === "/";
+
   const [animationDone, setAnimationDone] = useState(false);
   const handleAnimationComplete = useCallback(() => {
     setAnimationDone(true);
@@ -37,19 +44,32 @@ export default function LayoutClient() {
   const smoothScrollRef = useRef<ScrollSmoother | null>(null);
 
   const isMobile = useIsMobile(768);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-    smoothScrollRef.current = ScrollSmoother.create({
-      smooth: 0.6,
-      effects: false,
-    });
+
+    if (isLandingPage) {
+      smoothScrollRef.current = ScrollSmoother.create({
+        smooth: 0.6,
+        effects: false,
+      });
+    }
 
     return () => {
       smoothScrollRef.current?.kill();
+      smoothScrollRef.current = null;
     };
-  }, []);
+  }, [isLandingPage]);
 
   useEffect(() => {
+    if (!isLandingPage) {
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -67,12 +87,15 @@ export default function LayoutClient() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isLandingPage]);
+
+  const isHeaderVisible = isLandingPage ? animationDone : true;
 
   return (
     <>
-      <Header isMenuVisible={animationDone} />
-      {animationDone && (
+      <Header isMenuVisible={isHeaderVisible} />
+
+      {isLandingPage && animationDone && (
         <div className="fixed top-4 left-8 -translate-y-1/2 z-50 animate-fadeIn">
           {sections.map((section) => (
             <span
@@ -83,11 +106,11 @@ export default function LayoutClient() {
               ? "text-foreground sm:text-white"
               : "text-foreground"
           }
-                 ${
-                   section.id === "stack" && activeSection === "stack"
-                     ? "text-foreground sm:text-black"
-                     : "text-foreground"
-                 }
+              ${
+                section.id === "stack" && activeSection === "stack"
+                  ? "text-foreground sm:text-black"
+                  : "text-foreground"
+              }
           text-shadow-xs text-shadow-background/32
           ${activeSection === section.id ? "opacity-100" : "opacity-0"}`}
             >
@@ -96,74 +119,79 @@ export default function LayoutClient() {
           ))}
         </div>
       )}
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <div
-            id="home"
-            ref={(el) => {
-              sectionRefs.current["home"] = el;
-            }}
-          >
-            <HeroClient onAnimationComplete={handleAnimationComplete} />
-          </div>
 
-          <Stack
-            id="stack"
-            ref={(el) => {
-              sectionRefs.current["stack"] = el;
-            }}
-          />
-
-          <div
-            id="projects"
-            ref={(el) => {
-              sectionRefs.current["projects"] = el;
-            }}
-          >
-            <Projects />
-          </div>
-
-          {isMobile ? (
+      {isLandingPage ? (
+        <div id="smooth-wrapper">
+          <div id="smooth-content">
             <div
-              id="experience"
+              id="home"
               ref={(el) => {
-                sectionRefs.current["experience"] = el;
+                sectionRefs.current["home"] = el;
               }}
             >
-              <ExperienceMobile />
+              <HeroClient onAnimationComplete={handleAnimationComplete} />
             </div>
-          ) : (
-            <div
-              id="experience"
+
+            <Stack
+              id="stack"
               ref={(el) => {
-                sectionRefs.current["experience"] = el;
+                sectionRefs.current["stack"] = el;
+              }}
+            />
+
+            <div
+              id="projects"
+              ref={(el) => {
+                sectionRefs.current["projects"] = el;
               }}
             >
-              <Experience />
+              <Projects />
             </div>
-          )}
 
-          <div
-            id="contact"
-            ref={(el) => {
-              sectionRefs.current["contact"] = el;
-            }}
-          >
-            <Contact />
+            {isMobile ? (
+              <div
+                id="experience"
+                ref={(el) => {
+                  sectionRefs.current["experience"] = el;
+                }}
+              >
+                <ExperienceMobile />
+              </div>
+            ) : (
+              <div
+                id="experience"
+                ref={(el) => {
+                  sectionRefs.current["experience"] = el;
+                }}
+              >
+                <Experience />
+              </div>
+            )}
+
+            <div
+              id="contact"
+              ref={(el) => {
+                sectionRefs.current["contact"] = el;
+              }}
+            >
+              <Contact />
+            </div>
+
+            <div
+              id="faq"
+              ref={(el) => {
+                sectionRefs.current["faq"] = el;
+              }}
+            >
+              <Faq />
+            </div>
+
+            <Footer />
           </div>
-
-          <div
-            id="faq"
-            ref={(el) => {
-              sectionRefs.current["faq"] = el;
-            }}
-          >
-            <Faq />
-          </div>
-
-          <Footer />
         </div>
-      </div>
+      ) : (
+        <div id="content-wrapper-fallback">{children}</div>
+      )}
     </>
   );
 }
