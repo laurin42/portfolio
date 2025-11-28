@@ -7,15 +7,9 @@ export default function Contact() {
     <>
       <section className="relative min-h-screen flex flex-col justify-center items-center font-funnel">
         <Link href="mailto:lauri.schmidt@proton.me" target="blank">
-          <motion.h2
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            transition={{ duration: 0.2, ease: "easeIn" }}
-            style={{ transformOrigin: "bottom" }}
-            className="text-5xl sm:text-9xl text-center pb-4 mx-16 sm:mx-0 mb-2  border-b-4 border-accent/64 font-extrabold bg-linear-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% bg-clip-text text-transparent"
-          >
+          <h2 className="text-5xl sm:text-9xl text-center pb-4 mx-16 sm:mx-0 mb-2  border-b-4 border-accent/64 font-extrabold bg-linear-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% bg-clip-text text-transparent">
             Contact Me Today
-          </motion.h2>
+          </h2>
         </Link>
         <motion.p
           initial={{ opacity: 0 }}
