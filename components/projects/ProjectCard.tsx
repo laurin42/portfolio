@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
+import { motion } from "motion/react";
 import {
   Card,
   CardContent,
@@ -44,15 +45,22 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
           `}
           >
             {project.link && (
-              <Link
-                href={project.link}
-                target="blank"
-                className="hover:text-accent transition-opacity duration-1200"
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 100 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
               >
-                {project.title}
-              </Link>
+                <Link
+                  href={project.link}
+                  target="blank"
+                  className="hover:text-accent transition-opacity duration-1200"
+                >
+                  {project.title}
+                </Link>
+              </motion.div>
             )}
           </CardTitle>
+
           <CardDescription
             className={`text-md sm:text-xl pb-4 sm:pb-0 max-w-xl mx-auto transition-opacity duration-1400
               `}
@@ -66,7 +74,12 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
           `}
         >
           {project.screenshots?.[0] && (
-            <div className="relative w-full max-w-3xl aspect-16/10">
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="relative w-full max-w-3xl aspect-16/10"
+            >
               <Image
                 src={project.screenshots[0]}
                 alt=""
@@ -74,10 +87,15 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
                 sizes="(min-width: 1024px) 50vw, 90vw"
                 className="object-contain"
               />
-            </div>
+            </motion.div>
           )}
           {project.screenshots?.[1] && (
-            <div className="relative w-1/3 sm:w-1/4 aspect-9/19 -ml-20 z-20">
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="relative w-1/3 sm:w-1/4 aspect-9/19 -ml-20 z-20"
+            >
               <Image
                 src={project.screenshots[1]}
                 alt={`${project.title} mobile mockup`}
@@ -86,7 +104,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
                 className="object-contain"
                 loading="lazy"
               />
-            </div>
+            </motion.div>
           )}
           {project.icons &&
             project.icons.map((src, i) => (
@@ -106,18 +124,30 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
           className={`pt-4 flex flex-col justify-center transition-opacity duration-1800 ease-out`}
         >
           {project.details && (
-            <CardDescription className="text-balance text-lg">
-              {project.details}
-            </CardDescription>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 100 }}
+              transition={{ duration: 0.4, delay: 0.8, ease: "easeInOut" }}
+            >
+              <CardDescription className="text-balance text-lg">
+                {project.details}
+              </CardDescription>
+            </motion.div>
           )}
           {project.link && project.screenshots && (
-            <Link
-              href={project.link}
-              target="_blank"
-              className="hover:text-accent transition-opacity duration-2200 underline"
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 100 }}
+              transition={{ duration: 0.4, delay: 0.8, ease: "easeInOut" }}
             >
-              Visit project
-            </Link>
+              <Link
+                href={project.link}
+                target="_blank"
+                className="hover:text-accent transition-opacity duration-2200 underline"
+              >
+                Visit project
+              </Link>
+            </motion.div>
           )}
           {project.link && !project.screenshots && (
             <Link
