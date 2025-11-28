@@ -23,7 +23,7 @@ export default function StackBlock({
       <motion.h2
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
-        transition={{ duration: 0.1, ease: "easeIn" }}
+        transition={{ duration: 0.1, ease: "easeInOut" }}
         style={{ transformOrigin: "bottom" }}
         className="text-3xl sm:text-7xl text-center w-fit mx-auto flex-nowrap tracking-wide font-funnel bg-black p-1 sm:pb-2"
       >
