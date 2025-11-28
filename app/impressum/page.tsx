@@ -1,8 +1,7 @@
 export default function ImpressumPage() {
   return (
-    <section className="min-h-screen w-full flex flex-col justify-start items-start p-8 font-funnel text-foreground">
+    <section className="min-h-screen w-full flex flex-col justify-start items-start px-8 py-2 font-funnel text-foreground">
       <h1 className="text-3xl sm:text-5xl font-bold mb-6">Impressum</h1>
-
       <div className="space-y-6 leading-relaxed max-w-3xl">
         <div>
           <strong>Anbieter:</strong>
@@ -82,9 +81,7 @@ export default function ImpressumPage() {
           Normalfall kein Handlungsbedarf.
         </div>
 
-        <p className="text-sm text-muted-foreground mt-8">
-          Stand: {new Date().getFullYear()}
-        </p>
+        <p className="text-sm text-muted-foreground mt-8"></p>
       </div>
     </section>
   );
