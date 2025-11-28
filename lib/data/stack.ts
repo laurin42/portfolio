@@ -10,19 +10,19 @@
     { src: "/icons/frontendIcons/typescript.svg", alt: "TypeScript" },
     { src: "/icons/frontendIcons/javascript.svg", alt: "JavaScript" },
     { src: "/icons/frontendIcons/html.svg", alt: "HTML" },
-    { src: "/icons/frontendIcons/Css.svg", alt: "CSS" },
+    { src: "/icons/frontendIcons/css.svg", alt: "CSS" },
   ];
 
   export const BackendIcons: Icon[] = [
     { src: "/icons/backendIcons/node.js.svg", alt: "Node.js" },
     { src: "/icons/backendIcons/express.svg", alt: "Express" },
-    { src: "/icons/backendIcons/postgresSQL.svg", alt: "PostgresSQL" },
+    { src: "/icons/backendIcons/postgressql.svg", alt: "PostgresSQL" },
     { src: "/icons/backendIcons/drizzle.svg", alt: "Drizzle ORM" },
   ];
 
   export const DevToolsIcons: Icon[] = [
     { src: "/icons/devTools/git.svg", alt: "Git" },
-    { src: "/icons/devTools/Github.svg", alt: "GitHub" },
+    { src: "/icons/devTools/github.svg", alt: "GitHub" },
     { src: "/icons/devTools/docker.svg", alt: "Docker" },
     { src: "/icons/devTools/coolify.svg", alt: "Coolify" },
   ];

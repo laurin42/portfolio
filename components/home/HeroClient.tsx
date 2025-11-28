@@ -89,7 +89,7 @@ export default function HeroClient({
           <div className="w-8 h-8 sm:w-14 sm:h-14">
             <Link href="https://github.com/laurin42" target="blank">
               <Image
-                src={"/icons/devTools/Github.svg"}
+                src={"/icons/devTools/github.svg"}
                 alt="GitHub"
                 height={100}
                 width={100}
@@ -103,7 +103,7 @@ export default function HeroClient({
               target="blank"
             >
               <Image
-                src={"/icons/LinkedIn.svg"}
+                src={"/icons/linkedin.svg"}
                 alt="GitHub"
                 height={100}
                 width={100}
