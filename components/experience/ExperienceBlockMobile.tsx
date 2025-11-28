@@ -17,9 +17,9 @@ export default function ExperienceBlockMobile({
 }: ExperienceBlockMobile) {
   return (
     <div
-      className={`w-full h-svh flex pl-4 justify-center items-center font-funnel ${background}`}
+      className={`w-full h-svh flex justify-center items-center font-funnel ${background}`}
     >
-      <div className="animate-inside h-svh">
+      <div className="animate-inside h-svh pl-4">
         <div className="w-full sm:max-w-3xl h-full mx-auto bg-background p-6 rounded-xs flex flex-col justify-center items-center">
           <p className="w-fit mx-auto bg-foreground text-sm sm:text-lg text-center font-thin text-background p-2 mb-4">
             {experience.period} | {experience.company}

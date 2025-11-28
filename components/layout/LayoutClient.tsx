@@ -13,12 +13,14 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Faq from "../faq/Faq";
 import ExperienceMobile from "../experience/ExperienceMobile";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const sections = [
   { id: "home", label: "Home" },
   { id: "stack", label: "Stack" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
+  { id: "experienceMobile", label: "Experience" },
   { id: "contact", label: "Contact" },
   { id: "faq", label: "FAQ" },
 ];
@@ -34,6 +36,7 @@ export default function LayoutClient() {
 
   const smoothScrollRef = useRef<ScrollSmoother | null>(null);
 
+  const isMobile = useIsMobile(768);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
     smoothScrollRef.current = ScrollSmoother.create({
@@ -119,15 +122,26 @@ export default function LayoutClient() {
           >
             <Projects />
           </div>
-          <div
-            id="experience"
-            ref={(el) => {
-              sectionRefs.current["experience"] = el;
-            }}
-          >
-            <Experience />
-            <ExperienceMobile />
-          </div>
+
+          {isMobile ? (
+            <div
+              id="experience"
+              ref={(el) => {
+                sectionRefs.current["experience"] = el;
+              }}
+            >
+              <ExperienceMobile />
+            </div>
+          ) : (
+            <div
+              id="experience"
+              ref={(el) => {
+                sectionRefs.current["experience"] = el;
+              }}
+            >
+              <Experience />
+            </div>
+          )}
 
           <div
             id="contact"
