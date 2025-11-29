@@ -27,15 +27,15 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
 
   return (
     <div
-      className="w-full flex justify-center items-center 
+      className="w-full h-svh flex flex-col justify-center items-center
     
     "
     >
       <Card
         ref={cardRef}
         className={`relative
-          h-svh
           w-7/8 sm:w-2/3 xl:w-1/2
+          h-svh
           text-accent-foreground
           text-center
           font-funnel

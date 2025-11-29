@@ -32,7 +32,7 @@
       title: "Frontend",
       text: "Specializing in modern React, Next.js & TypeScript development",
       icons: FrontendIcons,
-      bgColor: "bg-muted-foreground",
+      bgColor: "bg-muted-foreground/80",
     },
     {
       title: "Backend",
@@ -44,6 +44,6 @@
       title: "Development Tools",
       text: "Professional development workflow & deployment tools",
       icons: DevToolsIcons,
-      bgColor: "bg-muted-foreground",
+      bgColor: "bg-muted-foreground/80",
     },
   ];

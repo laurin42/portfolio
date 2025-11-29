@@ -20,7 +20,7 @@ export default function ExperienceBlock({
       className={`block w-full  will-transform flex justify-center font-funnel ${background}`}
     >
       <div className="animate-inside flex flex-col justify-center items-center">
-        <div className="w-full sm:max-w-3xl sm:h-2/3 mx-auto text-center bg-background p-4 px-8 rounded-xs flex flex-col justify-center items-center">
+        <div className="w-full sm:max-w-3xl sm:h-12/20 h-9/20 mx-auto text-center bg-background p-4 px-8 rounded-xs flex flex-col justify-center items-center">
           <h3 className="w-fit self-start bg-foreground text-background text-4xl sm:text-5xl border-b border-primary/50 font-semibold">
             {experience.title}
           </h3>

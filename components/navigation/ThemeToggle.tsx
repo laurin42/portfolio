@@ -30,7 +30,7 @@ export function ThemeToggle({ activeSection }: { activeSection: string }) {
       onClick={() => setTheme(nextTheme)}
       aria-label="Toggle theme"
       className={`relative mx-2 cursor-pointer transition-colors duration-150 ${
-        isStackActive ? "text-black" : "text-foreground"
+        isStackActive ? "text-foreground sm:text-black" : "text-foreground"
       }`}
     >
       <Sun

@@ -7,9 +7,11 @@ import { ThemeToggle } from "./ThemeToggle";
 export default function Header({
   isMenuVisible,
   activeSection,
+  smoothScrollRef,
 }: {
   isMenuVisible: boolean;
   activeSection: string;
+  smoothScrollRef: React.RefObject<ScrollSmoother | null>;
 }) {
   const [visible, setVisible] = useState(false);
 
@@ -28,7 +30,10 @@ export default function Header({
     >
       <div className="w-full flex justify-end">
         <ThemeToggle activeSection={activeSection} />
-        <NavigationMenu activeSection={activeSection} />
+        <NavigationMenu
+          activeSection={activeSection}
+          smoothScrollRef={smoothScrollRef}
+        />
       </div>
     </header>
   );

@@ -8,7 +8,7 @@ import { faqData } from "@/lib/data/faq";
 
 export default function Faq() {
   return (
-    <section className="min-h-svh w-full flex flex-col justify-center items-center font-funnel bg-muted-foreground">
+    <section className="min-h-svh w-full flex flex-col justify-center items-center font-funnel bg-muted-foreground/80">
       <h2 className="text-3xl text-dark sm:text-4xl border-b border-dark/32 pb-2 mb-2 px-4 text-center mx-16 sm:mx-0">
         Frequently Asked Questions
       </h2>
