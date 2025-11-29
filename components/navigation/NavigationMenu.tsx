@@ -42,7 +42,9 @@ export default function NavigationMenu({
       <nav
         className={`flex justify-end pr-4
           transition-colors duration-150
-          ${isStackActive ? "text-black" : "text-foreground"}`}
+          ${
+            isStackActive ? "text-foreground sm:text-black" : "text-foreground"
+          }`}
       >
         <button
           onClick={() => setIsOpen(true)}
