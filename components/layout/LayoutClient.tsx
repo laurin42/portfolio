@@ -93,7 +93,7 @@ export default function LayoutClient({
 
   return (
     <>
-      <Header isMenuVisible={isHeaderVisible} />
+      <Header isMenuVisible={isHeaderVisible} activeSection={activeSection} />
 
       {isLandingPage && animationDone && (
         <div className="fixed top-4 left-8 -translate-y-1/2 z-50 animate-fadeIn">

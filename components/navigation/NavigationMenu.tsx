@@ -3,7 +3,11 @@
 import { IoMenu as Menu, IoClose as Close } from "react-icons/io5";
 import { useState } from "react";
 
-export default function NavigationMenu() {
+export default function NavigationMenu({
+  activeSection,
+}: {
+  activeSection: string;
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
@@ -14,9 +18,15 @@ export default function NavigationMenu() {
     { href: "#contact", label: "Contact" },
   ];
 
+  const isStackActive = activeSection === "stack";
+
   return (
     <div>
-      <nav className="flex justify-end pr-4 text-foreground">
+      <nav
+        className={`flex justify-end pr-4
+          transition-colors duration-150
+          ${isStackActive ? "text-black" : "text-foreground"}`}
+      >
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Open menu"
