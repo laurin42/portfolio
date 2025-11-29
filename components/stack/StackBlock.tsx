@@ -18,14 +18,15 @@ export default function StackBlock({
 }: StackBlockProps) {
   return (
     <div
-      className={`h-screen px-8 flex flex-col items-center justify-center text-white font-funnel ${bgColor}`}
+      className={`h-screen px-8 flex flex-col items-center justify-center text-white font-funnel 
+        ${bgColor}`}
     >
       <motion.h2
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
         transition={{ duration: 0.1, ease: "easeInOut" }}
         style={{ transformOrigin: "bottom" }}
-        className="text-3xl sm:text-7xl text-center w-fit mx-auto flex-nowrap tracking-wide font-funnel bg-black p-1 sm:pb-2"
+        className="text-3xl sm:text-7xl text-center w-fit mx-auto flex-nowrap tracking-wide font-funnel bg-black p-1 mb-4"
       >
         {title}
       </motion.h2>
@@ -34,7 +35,7 @@ export default function StackBlock({
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 100 }}
         transition={{ duration: 0.8, ease: "easeIn" }}
-        className="font-thin text-2xl sm:pt-4 pb-1 mb-8 border-b border-black/32 text-black text-center"
+        className="font-thin text-2xl sm:pt-4 pb-1 mb-8 text-black text-center"
       >
         {text}
       </motion.p>

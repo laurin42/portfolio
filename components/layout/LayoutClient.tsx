@@ -131,13 +131,14 @@ export default function LayoutClient({
             >
               <HeroClient onAnimationComplete={handleAnimationComplete} />
             </div>
-
-            <Stack
+            <div
               id="stack"
               ref={(el) => {
                 sectionRefs.current["stack"] = el;
               }}
-            />
+            >
+              <Stack />
+            </div>
 
             <div
               id="projects"

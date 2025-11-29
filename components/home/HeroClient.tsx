@@ -63,7 +63,7 @@ export default function HeroClient({
           animate={{ scaleY: 1 }}
           transition={{ duration: 0.2, ease: "easeIn" }}
           style={{ transformOrigin: "bottom" }}
-          className="text-3xl sm:text-3xl md:text-6xl lg:text-8xl text-center aninmate-fadeIn"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-center aninmate-fadeIn pb-2"
         >
           Hello<span className="text-accent">, </span>I am Laurin
           <span className="text-accent">.</span>
