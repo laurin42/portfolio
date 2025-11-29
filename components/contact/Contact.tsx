@@ -56,7 +56,7 @@ export default function Contact() {
                 alt="GitHub"
                 height={100}
                 width={100}
-                className="dark:invert object-contain transition-transform duration-300 hover:scale-104 cursor-pointer"
+                className="object-contain transition-transform duration-300 hover:scale-104 cursor-pointer"
               />
             </div>
           </Link>
