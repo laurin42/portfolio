@@ -86,7 +86,22 @@ export default function HeroClient({
         ${animationDone ? "opacity-100" : "opacity-0"}
           `}
         >
-          <div className="w-8 h-8 sm:w-14 sm:h-14">
+          <Link
+            href="mailto:laurin.schmidt@proton.me"
+            target="blank"
+            className=""
+          >
+            <div className="h-12 w-12">
+              <Image
+                src={"/icons/mail.svg"}
+                alt="Mail"
+                height={100}
+                width={100}
+                className="dark:invert object-contain transition-transform duration-300 hover:scale-104 cursor-pointer"
+              />
+            </div>
+          </Link>
+          <div className="h-12 w-12">
             <Link href="https://github.com/laurin42" target="blank">
               <Image
                 src={"/icons/devTools/GitHub.svg"}
@@ -97,7 +112,7 @@ export default function HeroClient({
               />
             </Link>
           </div>
-          <div className="w-8 h-8 sm:w-14 sm:h-14">
+          <div className="h-12 w-12">
             <Link
               href="https://www.linkedIn.com/in/laurin-schmidt-650008330/"
               target="blank"
