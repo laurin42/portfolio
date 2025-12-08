@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, lazy } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import CharacListAnimated from "./CharacListAnimated";
@@ -52,7 +52,7 @@ export default function HeroClient({
           <Image
             src="/images/hero/hero.webp"
             alt="Image of Laurin Schmidt – Webdeveloper"
-            priority
+            loading="lazy"
             fill
             sizes="256px"
             className="object-cover rounded-full"
