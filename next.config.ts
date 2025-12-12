@@ -11,7 +11,7 @@ export default withSentryConfig(nextConfig, {
   org: "laurin",
 
   project: "portfolio",
-  sentryUrl: "http://glitchtip-ngwkso8g004ocg04kocc4s44.152.53.139.218.sslip.io/",
+  sentryUrl: "https://glitchtip.laurinschmidt.dev/",
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
