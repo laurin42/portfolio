@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, lazy } from "react";
+import { useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import CharacListAnimated from "./CharacListAnimated";
@@ -32,7 +32,7 @@ export default function HeroClient({
         initial={{ opacity: 0 }}
         animate={{ opacity: 100 }}
         transition={{ duration: 0.2, ease: "easeIn" }}
-        className="hidden sm:block sm:relative sm:w-1/3 sm:h-full"
+        className="hidden sm:block relative sm:w-1/3 sm:h-full"
       >
         <Image
           src="/images/hero/hero.webp"
