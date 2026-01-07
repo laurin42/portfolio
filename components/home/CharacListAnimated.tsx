@@ -6,7 +6,7 @@ const characteristics = [
   "",
   "curious",
   "dedicated",
-  "adaptable",
+  "adaptable!",
   "",
   "webdeveloper",
 ];
