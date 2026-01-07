@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="min-h-16 max-h-32svh w-full flex flex-col justify-center items-center font-funnel text-center p-4">
       <Link href="/impressum" className="mb-2">
-        Impressum
+        <h2>Impressum</h2>
       </Link>
       <p className="text-sm text-muted-foreground">
         &copy; {currentYear} Laurin Schmidt. All rights reserved.
