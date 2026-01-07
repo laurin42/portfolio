@@ -10,8 +10,8 @@ export default withSentryConfig(nextConfig, {
 
   org: "Laurin",
 
-  project: "portfolio",
-  sentryUrl: "https://glitchtip.laurinschmidt.dev/",
+  project: "Portfolio",
+  sentryUrl: "http://glitchtip-ekkgwgk4wogo4g08k8w0k04o.152.53.139.218.sslip.io",
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
