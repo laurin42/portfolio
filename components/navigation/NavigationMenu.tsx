@@ -67,7 +67,7 @@ export default function NavigationMenu({
       >
         <button
           onClick={() => setIsOpen(false)}
-          className="self-end curspor-pointer cursor-pointer"
+          className="self-end mb-4 cursor-pointer"
           aria-label="Close menu"
         >
           <Close className="w-12 h-12" />

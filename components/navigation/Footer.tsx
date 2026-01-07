@@ -16,6 +16,7 @@ export default function Footer({
       >
         Impressum & Datenschutz
       </button>
+
       <p className="text-sm text-muted-foreground">
         &copy; {currentYear} Laurin Schmidt. All rights reserved.
       </p>
