@@ -52,18 +52,14 @@ test.describe("Portfolio E2E Tests", () => {
 test("Impressum", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
 
-  const impressumLink = page.locator("footer").getByRole("link", { name: /Impressum/i });
-  await expect(impressumLink).toBeVisible();
+  const impressumButton = page.locator("footer").getByRole("button", { name: /Impressum/i });
+  await expect(impressumButton).toBeVisible();
 
-  await Promise.all([
-    page.waitForURL(/\/impressum/),
-    impressumLink.click()
-  ])
+  await impressumButton.click();
 
-  await expect(page.getByRole("heading", { name: "Impressum", level: 1 })).toBeVisible();
+  const modalHeading = page.getByRole("heading", { name: "Impressum", level: 2 });
+  await expect(modalHeading).toBeVisible();
 
-  await expect(page.locator("#smooth-wrapper")).not.toBeVisible();
-  await expect(page.locator("#content-wrapper-fallback")).toBeVisible();
 });
 
   test("Integrity: Section ID's", async ({ page }) => {
