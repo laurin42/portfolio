@@ -28,8 +28,9 @@ jobs:
     - name: Trigger Coolify Production Deployment
       if: github.event_name == 'push' && github.ref == 'refs/heads/main' && success()
       run: |
-        curl -L -X POST '${{ secrets.COOLIFY_WEBHOOK }}'
+        curl -X POST "${{ secrets.COOLIFY_WEBHOOK }}" -H "Authorization: Bearer ${{ secrets.COOLIFY_API_TOKEN }}"
+
     - name: Trigger Coolify Staging Deployment
       if: github.event_name == 'push' && github.ref == 'refs/heads/development' && success()
       run: |
-        curl -L -X POST '${{ secrets.COOLIFY_WEBHOOK_STAGING }}'
+        curl -X POST "${{ secrets.COOLIFY_WEBHOOK_STAGING }}" -H "Authorization: Bearer ${{ secrets.COOLIFY_API_TOKEN }}"
