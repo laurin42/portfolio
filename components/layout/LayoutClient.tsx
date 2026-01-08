@@ -205,7 +205,7 @@ export default function LayoutClient({
               <Faq />
             </div>
 
-            <Footer onImpressumClick={handleOpenImpressum} />
+            <Footer />
           </div>
         </div>
       ) : (
