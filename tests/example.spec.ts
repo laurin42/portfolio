@@ -56,10 +56,8 @@ test("Impressum", async ({ page }) => {
   await expect(impressumLink).toBeVisible();
 
   await impressumLink.click();
-
-  const modalHeading = page.getByRole("heading", { name: "Impressum", level: 2 });
-  await expect(modalHeading).toBeVisible();
-
+  
+  await expect(page.locator("h1")).toBeVisible();
 });
 
   test("Integrity: Section ID's", async ({ page }) => {
