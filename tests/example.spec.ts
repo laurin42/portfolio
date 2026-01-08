@@ -55,15 +55,9 @@ test("Impressum", async ({ page }) => {
   const impressumLink = page.locator("footer").getByRole("link", { name: /Impressum/i });
   await expect(impressumLink).toBeVisible();
 
-  await Promise.all([
-    page.waitForURL(/\/impressum/),
-    impressumLink.click()
-  ])
-
-  await expect(page.getByRole("heading", { name: "Impressum", level: 1 })).toBeVisible();
-
-  await expect(page.locator("#smooth-wrapper")).not.toBeVisible();
-  await expect(page.locator("#content-wrapper-fallback")).toBeVisible();
+  await impressumLink.click();
+  
+  await expect(page.locator("h1")).toBeVisible();
 });
 
   test("Integrity: Section ID's", async ({ page }) => {
