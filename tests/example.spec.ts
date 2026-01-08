@@ -52,10 +52,10 @@ test.describe("Portfolio E2E Tests", () => {
 test("Impressum", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
 
-  const impressumButton = page.locator("footer").getByRole("button", { name: /Impressum/i });
-  await expect(impressumButton).toBeVisible();
+  const impressumLink = page.locator("footer").getByRole("link", { name: /Impressum/i });
+  await expect(impressumLink).toBeVisible();
 
-  await impressumButton.click();
+  await impressumLink.click();
 
   const modalHeading = page.getByRole("heading", { name: "Impressum", level: 2 });
   await expect(modalHeading).toBeVisible();
