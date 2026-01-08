@@ -31,10 +31,10 @@ jobs:
       run: |
         if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
           echo "Deploying to Production..."
-          URL="${{ secrets.COOLIFY_WEBHOOK_PROD }}"
+          URL="${{ secrets.COOLIFY_WEBHOOK }}"
         else
           echo "Deploying to Staging..."
-          URL="${{ secrets.COOLIFY_WEBHOOK }}"
+          URL="${{ secrets.COOLIFY_WEBHOOK_STAGING }}"
         fi
         
         curl -X POST "$URL" \
