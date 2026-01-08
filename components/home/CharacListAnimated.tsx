@@ -8,7 +8,7 @@ const characteristics = [
   "dedicated",
   "adaptable",
   "",
-  "webdeveloper",
+  "webdeveloper.",
 ];
 
 export default function CharacListAnimated({
