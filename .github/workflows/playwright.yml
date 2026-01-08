@@ -25,12 +25,11 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
-        
-    - name: Trigger Coolify Deployment
-      if: github.ref == 'refs/heads/main' && success()
+    - name: Trigger Coolify Production Deployment
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main' && success()
       run: |
         curl -L -X POST '${{ secrets.COOLIFY_WEBHOOK }}'
     - name: Trigger Coolify Staging Deployment
-      if: github.ref == 'refs/heads/development' && success()
+      if: github.event_name == 'push' && github.ref == 'refs/heads/development' && success()
       run: |
         curl -L -X POST '${{ secrets.COOLIFY_WEBHOOK_STAGING }}'
