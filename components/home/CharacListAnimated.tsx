@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react";
 
 const characteristics = [
   "",
-  "curious.",
-  "dedicated.",
-  "adaptable.",
+  "curious",
+  "dedicated",
+  "adaptable",
   "",
-  "webdeveloper.",
+  "webdeveloper",
 ];
 
 export default function CharacListAnimated({
