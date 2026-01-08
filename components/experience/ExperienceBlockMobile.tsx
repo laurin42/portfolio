@@ -17,20 +17,24 @@ export default function ExperienceBlockMobile({
 }: ExperienceBlockMobile) {
   return (
     <div
-      className={`w-full h-svh flex justify-center items-center font-funnel ${background}`}
+      className={`w-full h-full flex flex-col justify-center items-center font-funnel ${background}`}
     >
       <div className="animate-inside h-svh pl-4">
-        <div className="w-full sm:max-w-3xl h-full mx-auto bg-background p-6 rounded-xs flex flex-col justify-center items-center">
-          <p className="w-fit mx-auto bg-foreground text-sm sm:text-lg text-center font-thin text-background p-2 mb-4">
-            {experience.period} | {experience.company}
-          </p>
-          <h3 className="w-fit mx-auto text-3xl sm:text-4xl text-center pb-2 mb-4 border-b border-primary/50 font-semibold">
+        <div className="w-full sm:max-w-3xl h-full mx-auto bg-background pl-12 p-6 rounded-xs flex flex-col justify-center items-center">
+          <h3 className="w-fit self-start text-3xl sm:text-4xl bg-foreground text-background text-left p-1 mb-1 font-semibold">
             {experience.title}
           </h3>
-          <p className="pl-2 sm:text-xl text-muted-foreground mb-6 sm:mb-8">
+          <p className="w-full text-left font-thin  mb-16">
+            {experience.period}
+          </p>
+          <p className="w-fit self-start text-left bg-foreground text-background text-xl py-1 px-0.5 mb-2">
+            {experience.company}
+          </p>
+
+          <p className="sm:text-xl text-muted-foreground mb-8 pr-8">
             {experience.description}
           </p>
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap justify-start gap-2 pr-8">
             {experience.tags.map((tag) => (
               <span
                 key={tag}

@@ -32,7 +32,7 @@ export default function HeroClient({
         initial={{ opacity: 0 }}
         animate={{ opacity: 100 }}
         transition={{ duration: 0.2, ease: "easeIn" }}
-        className="hidden sm:block sm:relative sm:w-1/3 sm:h-full"
+        className="hidden sm:block relative sm:w-1/3 sm:h-full"
       >
         <Image
           src="/images/hero/hero.webp"
@@ -52,7 +52,7 @@ export default function HeroClient({
           <Image
             src="/images/hero/hero.webp"
             alt="Image of Laurin Schmidt – Webdeveloper"
-            priority
+            loading="lazy"
             fill
             sizes="256px"
             className="object-cover rounded-full"
@@ -63,7 +63,7 @@ export default function HeroClient({
           animate={{ scaleY: 1 }}
           transition={{ duration: 0.2, ease: "easeIn" }}
           style={{ transformOrigin: "bottom" }}
-          className="text-3xl sm:text-3xl md:text-6xl lg:text-8xl text-center aninmate-fadeIn"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl text-center aninmate-fadeIn pb-2"
         >
           Hello<span className="text-accent">, </span>I am Laurin
           <span className="text-accent">.</span>
@@ -86,10 +86,25 @@ export default function HeroClient({
         ${animationDone ? "opacity-100" : "opacity-0"}
           `}
         >
-          <div className="w-8 h-8 sm:w-14 sm:h-14">
+          <Link
+            href="mailto:laurin.schmidt@proton.me"
+            target="blank"
+            className=""
+          >
+            <div className="h-12 w-12">
+              <Image
+                src={"/icons/mail.svg"}
+                alt="Mail"
+                height={100}
+                width={100}
+                className="dark:invert object-contain transition-transform duration-300 hover:scale-104 cursor-pointer"
+              />
+            </div>
+          </Link>
+          <div className="h-12 w-12">
             <Link href="https://github.com/laurin42" target="blank">
               <Image
-                src={"/icons/devTools/Github.svg"}
+                src={"/icons/devTools/GitHub.svg"}
                 alt="GitHub"
                 height={100}
                 width={100}
@@ -97,9 +112,9 @@ export default function HeroClient({
               />
             </Link>
           </div>
-          <div className="w-8 h-8 sm:w-14 sm:h-14">
+          <div className="h-12 w-12">
             <Link
-              href="https://www.linkedin.com/in/laurin-schmidt-650008330/"
+              href="https://www.linkedIn.com/in/laurin-schmidt-650008330/"
               target="blank"
             >
               <Image

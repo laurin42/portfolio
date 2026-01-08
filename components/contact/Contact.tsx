@@ -31,18 +31,32 @@ export default function Contact() {
                 alt="Mail"
                 height={100}
                 width={100}
-                className="dark:invert object-contain"
+                className="dark:invert object-contain transition-transform duration-300 hover:scale-104 cursor-pointer"
               />
             </div>
           </Link>
           <Link href="https://github.com/laurin42" target="blank">
             <div className="h-16 w-16">
               <Image
-                src={"/icons/devTools/Github.svg"}
+                src={"/icons/devTools/GitHub.svg"}
                 alt="GitHub"
                 height={100}
                 width={100}
-                className="dark:invert object-contain"
+                className="dark:invert object-contain transition-transform duration-300 hover:scale-104 cursor-pointer"
+              />
+            </div>
+          </Link>
+          <Link
+            href="https://www.linkedIn.com/in/laurin-schmidt-650008330/"
+            target="blank"
+          >
+            <div className="h-16 w-16">
+              <Image
+                src={"/icons/LinkedIn.svg"}
+                alt="GitHub"
+                height={100}
+                width={100}
+                className="object-contain transition-transform duration-300 hover:scale-104 cursor-pointer"
               />
             </div>
           </Link>

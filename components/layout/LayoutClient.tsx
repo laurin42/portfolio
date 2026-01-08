@@ -8,6 +8,7 @@ import Projects from "../projects/Projects";
 import Experience from "../experience/Experience";
 import Contact from "../contact/Contact";
 import Footer from "../navigation/Footer";
+import ImpressumModal from "../impressum/ImpressumModal";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -36,6 +37,14 @@ export default function LayoutClient({
   const [animationDone, setAnimationDone] = useState(false);
   const handleAnimationComplete = useCallback(() => {
     setAnimationDone(true);
+  }, []);
+
+  const [isImpressumOpen, setIsImpressumOpen] = useState(false);
+  const handleOpenImpressum = useCallback(() => {
+    setIsImpressumOpen(true);
+  }, []);
+  const handleCloseImpressum = useCallback(() => {
+    setIsImpressumOpen(false);
   }, []);
 
   const [activeSection, setActiveSection] = useState(sections[0].id);
@@ -70,6 +79,8 @@ export default function LayoutClient({
       return;
     }
 
+    const HEADER_OFFSET = 64;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -78,7 +89,10 @@ export default function LayoutClient({
           }
         });
       },
-      { threshold: 0, rootMargin: "-0% 0px -99% 0px" }
+      {
+        threshold: 0,
+        rootMargin: `-${HEADER_OFFSET}px 0px -70% 0px`,
+      }
     );
 
     sections.forEach((section) => {
@@ -93,7 +107,11 @@ export default function LayoutClient({
 
   return (
     <>
-      <Header isMenuVisible={isHeaderVisible} />
+      <Header
+        isMenuVisible={isHeaderVisible}
+        activeSection={activeSection}
+        smoothScrollRef={smoothScrollRef}
+      />
 
       {isLandingPage && animationDone && (
         <div className="fixed top-4 left-8 -translate-y-1/2 z-50 animate-fadeIn">
@@ -131,13 +149,14 @@ export default function LayoutClient({
             >
               <HeroClient onAnimationComplete={handleAnimationComplete} />
             </div>
-
-            <Stack
+            <div
               id="stack"
               ref={(el) => {
                 sectionRefs.current["stack"] = el;
               }}
-            />
+            >
+              <Stack />
+            </div>
 
             <div
               id="projects"
@@ -186,12 +205,13 @@ export default function LayoutClient({
               <Faq />
             </div>
 
-            <Footer />
+            <Footer onImpressumClick={handleOpenImpressum} />
           </div>
         </div>
       ) : (
         <div id="content-wrapper-fallback">{children}</div>
       )}
+      {isImpressumOpen && <ImpressumModal onClose={handleCloseImpressum} />}
     </>
   );
 }

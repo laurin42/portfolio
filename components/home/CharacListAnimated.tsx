@@ -8,7 +8,7 @@ const characteristics = [
   "dedicated",
   "adaptable",
   "",
-  "webdeveloper.",
+  "webdeveloper",
 ];
 
 export default function CharacListAnimated({
@@ -45,17 +45,21 @@ export default function CharacListAnimated({
   return (
     <h2
       role="text"
-      className="inline-block h-5 sm:h-10 overflow-hidden align-bottom"
+      className="inline-block h-6 sm:h-10 overflow-hidden align-bottom"
     >
       {characteristics.map((charac, id) =>
         id === activeIndex ? (
           <div
             key={id}
-            className="
-              h-4 sm:h-10 w-full flex items-center justify-center
+            className={`
+              h-6 sm:h-10 w-full flex items-center justify-center
               text-accent text-xl sm:text-xl md:text-2xl lg:text-4xl
-              animate-fadeInRight
-            "
+              ${
+                id === characteristics.length - 1
+                  ? "animate-fadeInUp"
+                  : "animate-fadeInRight"
+              }
+            `}
           >
             {charac}
           </div>

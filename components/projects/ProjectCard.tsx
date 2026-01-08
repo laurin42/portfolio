@@ -26,16 +26,19 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="w-full min-h-svh will-transform flex justify-center items-center">
+    <div
+      className="w-full h-svh flex flex-col justify-center items-center
+    
+    "
+    >
       <Card
         ref={cardRef}
         className={`relative
-          min-h-2/3 sm:h-full
           w-7/8 sm:w-2/3 xl:w-1/2
+          h-svh
           text-accent-foreground
           text-center
           font-funnel
-          mb-6
           transition-all duration-800
         `}
       >
@@ -133,7 +136,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.4, ease: "easeInOut" }}
             >
-              <CardDescription className="text-balance text-lg">
+              <CardDescription className="text-base text-lg">
                 {project.details}
               </CardDescription>
             </motion.div>

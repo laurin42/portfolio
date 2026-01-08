@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 
-export function ThemeToggle() {
+export function ThemeToggle({ activeSection }: { activeSection: string }) {
   const { theme, setTheme } = useTheme();
 
   const [mounted, setMounted] = React.useState(false);
@@ -23,11 +23,15 @@ export function ThemeToggle() {
 
   const nextTheme = theme === "light" || theme === "system" ? "dark" : "light";
 
+  const isStackActive = activeSection === "stack";
+
   return (
     <button
       onClick={() => setTheme(nextTheme)}
       aria-label="Toggle theme"
-      className="relative mx-2 cursor-pointer"
+      className={`relative mx-2 cursor-pointer transition-colors duration-150 ${
+        isStackActive ? "text-foreground sm:text-black" : "text-foreground"
+      }`}
     >
       <Sun
         size={34}

@@ -3,8 +3,8 @@ import ExperienceBlockMobile from "./ExperienceBlockMobile";
 
 export default function ExperienceMobile() {
   return (
-    <section className="w-full overflow-hidden">
-      <div className="flex flex-col h-full">
+    <section className="w-full h-full">
+      <div className="flex flex-col">
         {experiences.map((exp, i) => (
           <ExperienceBlockMobile
             key={i}

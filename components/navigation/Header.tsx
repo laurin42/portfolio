@@ -4,7 +4,15 @@ import { useEffect, useState } from "react";
 import NavigationMenu from "./NavigationMenu";
 import { ThemeToggle } from "./ThemeToggle";
 
-export default function Header({ isMenuVisible }: { isMenuVisible: boolean }) {
+export default function Header({
+  isMenuVisible,
+  activeSection,
+  smoothScrollRef,
+}: {
+  isMenuVisible: boolean;
+  activeSection: string;
+  smoothScrollRef: React.RefObject<ScrollSmoother | null>;
+}) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -21,8 +29,11 @@ export default function Header({ isMenuVisible }: { isMenuVisible: boolean }) {
       `}
     >
       <div className="w-full flex justify-end">
-        <ThemeToggle />
-        <NavigationMenu />
+        <ThemeToggle activeSection={activeSection} />
+        <NavigationMenu
+          activeSection={activeSection}
+          smoothScrollRef={smoothScrollRef}
+        />
       </div>
     </header>
   );

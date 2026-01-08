@@ -5,10 +5,10 @@
   
   export const FrontendIcons: Icon[] = [
     { src: "/icons/frontendIcons/next.svg", alt: "Next.js" },
-    { src: "/icons/frontendIcons/react.svg", alt: "React" },
-    { src: "/icons/frontendIcons/django.svg", alt: "Django" },
+    { src: "/icons/frontendIcons/React.svg", alt: "React" },
+    { src: "/icons/frontendIcons/Django.svg", alt: "Django" },
     { src: "/icons/frontendIcons/typescript.svg", alt: "TypeScript" },
-    { src: "/icons/frontendIcons/javascript.svg", alt: "JavaScript" },
+    { src: "/icons/frontendIcons/JavaScript.svg", alt: "JavaScript" },
     { src: "/icons/frontendIcons/html.svg", alt: "HTML" },
     { src: "/icons/frontendIcons/Css.svg", alt: "CSS" },
   ];
@@ -22,7 +22,7 @@
 
   export const DevToolsIcons: Icon[] = [
     { src: "/icons/devTools/git.svg", alt: "Git" },
-    { src: "/icons/devTools/Github.svg", alt: "GitHub" },
+    { src: "/icons/devTools/GitHub.svg", alt: "GitHub" },
     { src: "/icons/devTools/docker.svg", alt: "Docker" },
     { src: "/icons/devTools/coolify.svg", alt: "Coolify" },
   ];
@@ -32,7 +32,7 @@
       title: "Frontend",
       text: "Specializing in modern React, Next.js & TypeScript development",
       icons: FrontendIcons,
-      bgColor: "bg-muted-foreground",
+      bgColor: "bg-muted-foreground/80",
     },
     {
       title: "Backend",
@@ -44,6 +44,6 @@
       title: "Development Tools",
       text: "Professional development workflow & deployment tools",
       icons: DevToolsIcons,
-      bgColor: "bg-muted-foreground",
+      bgColor: "bg-muted-foreground/80",
     },
   ];
