@@ -27,6 +27,15 @@ jobs:
         retention-days: 30
         
     - name: Trigger Coolify Deployment
-      if: github.ref == 'refs/heads/main' && success()
+      if: success()
       run: |
-        curl -L -X POST '${{ secrets.COOLIFY_WEBHOOK }}'
+        if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+          echo "Deploying to Production..."
+          URL="${{ secrets.COOLIFY_WEBHOOK_PROD }}"
+        else
+          echo "Deploying to Staging..."
+          URL="${{ secrets.COOLIFY_WEBHOOK }}"
+        fi
+        
+        curl -X POST "$URL" \
+             -H "Authorization: Bearer ${{ secrets.COOLIFY_API_TOKEN }}"

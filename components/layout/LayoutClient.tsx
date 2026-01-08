@@ -8,7 +8,6 @@ import Projects from "../projects/Projects";
 import Experience from "../experience/Experience";
 import Contact from "../contact/Contact";
 import Footer from "../navigation/Footer";
-import ImpressumModal from "../impressum/ImpressumModal";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -37,14 +36,6 @@ export default function LayoutClient({
   const [animationDone, setAnimationDone] = useState(false);
   const handleAnimationComplete = useCallback(() => {
     setAnimationDone(true);
-  }, []);
-
-  const [isImpressumOpen, setIsImpressumOpen] = useState(false);
-  const handleOpenImpressum = useCallback(() => {
-    setIsImpressumOpen(true);
-  }, []);
-  const handleCloseImpressum = useCallback(() => {
-    setIsImpressumOpen(false);
   }, []);
 
   const [activeSection, setActiveSection] = useState(sections[0].id);
@@ -211,7 +202,6 @@ export default function LayoutClient({
       ) : (
         <div id="content-wrapper-fallback">{children}</div>
       )}
-      {isImpressumOpen && <ImpressumModal onClose={handleCloseImpressum} />}
     </>
   );
 }
