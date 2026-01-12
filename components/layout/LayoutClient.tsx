@@ -52,7 +52,7 @@ export default function LayoutClient({
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-    if (isLandingPage) {
+    if (isLandingPage && !isMobile) {
       smoothScrollRef.current = ScrollSmoother.create({
         smooth: 0.6,
         effects: false,
@@ -63,7 +63,7 @@ export default function LayoutClient({
       smoothScrollRef.current?.kill();
       smoothScrollRef.current = null;
     };
-  }, [isLandingPage]);
+  }, [isLandingPage, isMobile]);
 
   useEffect(() => {
     if (!isLandingPage) {
